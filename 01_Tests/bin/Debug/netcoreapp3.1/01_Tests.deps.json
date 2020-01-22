@@ -1,0 +1,49 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "01_Tests/1.0.0": {
+        "dependencies": {
+          "NumericalMethods": "1.0.0"
+        },
+        "runtime": {
+          "01_Tests.dll": {}
+        }
+      },
+      "NumericalMethods/1.0.0": {
+        "runtime": {
+          "NumericalMethods.dll": {}
+        }
+      },
+      "MathParser/1.0.0.0": {
+        "runtime": {
+          "MathParser.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "01_Tests/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NumericalMethods/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MathParser/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

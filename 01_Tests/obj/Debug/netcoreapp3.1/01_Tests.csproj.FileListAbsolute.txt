@@ -1,0 +1,16 @@
+D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\01_Tests\bin\Debug\netcoreapp3.1\01_Tests.exe
+D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\01_Tests\bin\Debug\netcoreapp3.1\01_Tests.deps.json
+D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\01_Tests\bin\Debug\netcoreapp3.1\01_Tests.runtimeconfig.json
+D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\01_Tests\bin\Debug\netcoreapp3.1\01_Tests.runtimeconfig.dev.json
+D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\01_Tests\bin\Debug\netcoreapp3.1\01_Tests.dll
+D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\01_Tests\bin\Debug\netcoreapp3.1\01_Tests.pdb
+D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\01_Tests\bin\Debug\netcoreapp3.1\NumericalMethods.dll
+D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\01_Tests\bin\Debug\netcoreapp3.1\MathParser.dll
+D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\01_Tests\bin\Debug\netcoreapp3.1\NumericalMethods.pdb
+D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\01_Tests\bin\Debug\netcoreapp3.1\MathParser.pdb
+D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\01_Tests\obj\Debug\netcoreapp3.1\01_Tests.csprojAssemblyReference.cache
+D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\01_Tests\obj\Debug\netcoreapp3.1\01_Tests.AssemblyInfoInputs.cache
+D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\01_Tests\obj\Debug\netcoreapp3.1\01_Tests.AssemblyInfo.cs
+D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\01_Tests\obj\Debug\netcoreapp3.1\01_Tests.csproj.CopyComplete
+D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\01_Tests\obj\Debug\netcoreapp3.1\01_Tests.dll
+D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\01_Tests\obj\Debug\netcoreapp3.1\01_Tests.pdb
