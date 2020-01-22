@@ -55,4 +55,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CurveFitting\Interpolation\" />
+    <Folder Include="CurveFitting\FourierApproximation\" />
+  </ItemGroup>
+
 </Project>

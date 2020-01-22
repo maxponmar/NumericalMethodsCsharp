@@ -23,7 +23,6 @@ D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\NumericalMethods\bin\Debug\netc
 D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\NumericalMethods\bin\Debug\netcoreapp3.0\NumericalMethods.pdb
 D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\NumericalMethods\bin\Debug\netcoreapp3.0\MathParser.dll
 D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\NumericalMethods\bin\Debug\netcoreapp3.0\MathParser.pdb
-D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\NumericalMethods\obj\Debug\netcoreapp3.0\NumericalMethods.csprojAssemblyReference.cache
 D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\NumericalMethods\obj\Debug\netcoreapp3.0\NumericalMethods.AssemblyInfoInputs.cache
 D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\NumericalMethods\obj\Debug\netcoreapp3.0\NumericalMethods.AssemblyInfo.cs
 D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\NumericalMethods\obj\Debug\netcoreapp3.0\NumericalMethods.csproj.CopyComplete
