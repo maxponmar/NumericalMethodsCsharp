@@ -58,7 +58,7 @@ This method only works with tridiagonal systems, to use it you need to give the 
  
 ## Optimization 
 * Golden section:
-Golden Section method is use to found the  maximum o minimum of a function between an internval.
+Golden Section method is use to found the  maximun o minimun value of a function between an internval.
 * Brent:
 The brent's methos combines parabolic interpolation and golden-section to find the minimun value between an interval
 
