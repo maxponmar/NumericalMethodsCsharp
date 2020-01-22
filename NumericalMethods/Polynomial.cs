@@ -44,7 +44,6 @@ namespace NumericalMethods
             this.coeficients = coefficients;
             degree = coeficients.Length - 1;
             deleteZeros();
-
         }
 
         /// <summary>
@@ -201,16 +200,26 @@ namespace NumericalMethods
             }
 
             int separator = output.Count() - (divisor.Count() - 1);
-            Console.WriteLine(separator);
-            Console.WriteLine(output.Count()-separator);
+            List<double> r = output.GetRange(separator, output.Count() - separator);
+            for (int i = 0; i < separator; i++)
+            {
+                r.Insert(0, 0);
+            }
+            //foreach (double x in r)
+            //{
+            //    Console.Write(x+" ");
+            //}
+            //Console.WriteLine("\nseparator = "+separator);
+            //Console.WriteLine("o.count+sep = "+ (output.Count() - separator));
             return (
                 output.GetRange(0, separator),
-                output.GetRange(separator, output.Count() - separator)
+                r
             );
         }
-
+       
         public override string ToString()
         {
+            byte flag = 0;
             string polynomialStr = "";
             double temp = 0;
             if (coeficients.Length == 0)
@@ -219,35 +228,47 @@ namespace NumericalMethods
             }
             else
             {
-                polynomialStr += string.Format($"{coeficients[0]}");
-                for (int i = 1; i < coeficients.Length; i++)
+                for (int i = 0; i < coeficients.Length; i++)
                 {
-                    if (i == 1)
-                    {
-                        if (coeficients[i] < 0)
+                    if (coeficients[i] != 0)
+                    {                        
+                        if (i == 0)
                         {
-                            temp = Math.Abs(coeficients[i]);
-                            polynomialStr += string.Format($" - ({temp}x)");
+                            flag = 2;
+                            polynomialStr += string.Format($"{coeficients[0]}");
                         }
-                        if (coeficients[i] > 0)
+                        else
                         {
-                            polynomialStr += string.Format($" + ({temp}x^{i})");
-                        }
-                    }
-                    else
-                    {
-                        if (coeficients[i] < 0)
-                        {
-                            temp = Math.Abs(coeficients[i]);
-                            polynomialStr += string.Format($" - ({temp}x^{i})");
-                        }
-                        if (coeficients[i] > 0)
-                        {
-                            polynomialStr += string.Format($" + ({coeficients[i]}x^{i})");
-                        }
+                            flag++;
+                            if (flag == 1)
+                            {
+                                if (coeficients[i] < 0)
+                                {
+                                    temp = Math.Abs(coeficients[i]);
+                                    polynomialStr += string.Format($"- ({temp}x^{i})");
+                                }
+                                if (coeficients[i] > 0)
+                                {
+                                    polynomialStr += string.Format($"({coeficients[i]}x^{i})");
+                                }
+                            }
+                            else
+                            {
+                                flag = 2;
+                                if (coeficients[i] < 0)
+                                {
+                                    temp = Math.Abs(coeficients[i]);
+                                    polynomialStr += string.Format($" - ({temp}x^{i})");
+                                }
+                                if (coeficients[i] > 0)
+                                {
+                                    polynomialStr += string.Format($" + ({coeficients[i]}x^{i})");
+                                }
+                            }
+                        }                        
                     }
                 }
-                return polynomialStr;
+                return polynomialStr; 
             }            
         }
     }

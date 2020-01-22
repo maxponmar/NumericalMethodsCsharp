@@ -28,3 +28,4 @@ D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\NumericalMethods\obj\Debug\netc
 D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\NumericalMethods\obj\Debug\netcoreapp3.0\NumericalMethods.csproj.CopyComplete
 D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\NumericalMethods\obj\Debug\netcoreapp3.0\NumericalMethods.dll
 D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\NumericalMethods\obj\Debug\netcoreapp3.0\NumericalMethods.pdb
+D:\02_Proyectos\03_CSharp\NumericalMethodsCsharp\NumericalMethods\obj\Debug\netcoreapp3.0\NumericalMethods.csprojAssemblyReference.cache

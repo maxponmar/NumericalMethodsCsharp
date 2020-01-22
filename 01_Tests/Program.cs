@@ -8,6 +8,7 @@ using NumericalMethods.LinearAlgebraicEquations;
 using NumericalMethods.Optimization;
 using NumericalMethods;
 
+
 namespace _01_PruebasNumericalMethods
 {
     class Program
@@ -59,20 +60,31 @@ namespace _01_PruebasNumericalMethods
             //list2csv(log);
             //Console.ReadKey();
 
-            Polynomial p = new Polynomial(new double[] { 1, 0, 3,0,0,0 });
-            Console.WriteLine("Degree - "+p.Degree);
-            Console.WriteLine(p);
-            //Console.WriteLine(p.Eval(2));
-            Console.WriteLine("-----");
+            //Polynomial p = new Polynomial(new double[] { 1, 0, 3,0,0,0 });
+            //Console.WriteLine("Degree - "+p.Degree);
+            //Console.WriteLine(p);
+            ////Console.WriteLine(p.Eval(2));
+            //Console.WriteLine("-----");
 
 
-            Polynomial N = new Polynomial (new double[] { 1, -12, 0, -42 });
-            Polynomial D = new Polynomial (new double[] { 1, -3, 1});
-            (Polynomial q , Polynomial r)= (N / D);
+            //Polynomial N = new Polynomial (new double[] { 1,2,3,4,5 });
+            //Polynomial D = new Polynomial (new double[] { 2,3,1});
+            //(Polynomial q , Polynomial r)= (N / D);
 
-            Console.WriteLine(q);
-            Console.WriteLine(r);
-            
-        }
+            //Console.WriteLine(q);           
+            //Console.WriteLine(r);
+
+            //List<string> x = CSV_Tools.csv2list(@"D:\Documentos\00_Pruebas\xd.csv");
+            //foreach (string z in x)
+            //{
+            //    Console.WriteLine(z);
+            //}
+
+            double[,] t = CSV_Tools.csv2doubleArray(@"D:\Documentos\00_Pruebas\test.csv",1,1);
+            foreach (double z in t)
+            {
+                Console.WriteLine(z);
+            }
+        }       
     }
 }
