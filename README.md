@@ -56,7 +56,17 @@ This function uses Gauss Elimination to solve a system of linear equations in th
 * Thomas LU
 This method only works with tridiagonal systems, to use it you need to give the main diagonal (f), the diagonal above the main one (e) and the diagonal below the main diagonal (g) - f,g and e are single dimention double arrays.
  
-## Optimization (Working-on)
+## Optimization 
 * Golden section
 Golden Section method is use to found the  maximum o minimum of a function between an internval.
-To found the maximum give the original function, otherwise invert it to found the minimum
+* Brent
+The brent's methos combines parabolic interpolation and golden-section to find the minimun value between an interval
+
+## Curve fitting (Working-on)
+*...
+
+## Extras
+* Polynomial class
+This class alows you to create, print and make basic operations bewteen polynomials (+,-,*,/).
+* CSV-Tools
+This static class alows you to work with csv files, you can convert a List<string> to a csv file, or creat a List<string> or double[,] array from a csv file.
