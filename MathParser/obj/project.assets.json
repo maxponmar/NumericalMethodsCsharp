@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v3.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Max\\.nuget\\packages\\": {}
+    "C:\\Users\\max_p\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -16,11 +16,11 @@
       "projectUniqueName": "D:\\02_Proyectos\\03_CSharp\\NumericalMethodsCsharp\\MathParser\\MathParser.csproj",
       "projectName": "MathParser",
       "projectPath": "D:\\02_Proyectos\\03_CSharp\\NumericalMethodsCsharp\\MathParser\\MathParser.csproj",
-      "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\max_p\\.nuget\\packages\\",
       "outputPath": "D:\\02_Proyectos\\03_CSharp\\NumericalMethodsCsharp\\MathParser\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Max\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\max_p\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -72,7 +72,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -6,7 +6,33 @@ namespace NumericalMethods.CurveFitting.Least_Square_Regression
 {
     public class LinearRegression
     {
-        //public double[] Solve()
+        /// <summary>
+        /// This method fits the given data with linear regression method (Return a Polynomial object)
+        /// </summary>
+        /// <param name="x">Independent data</param>
+        /// <param name="y">Dependent data</param>
+        /// <returns>Returns a polynomial of degree 1</returns>
+        public Polynomial Fit(double[] x, double [] y)
+        {
+            double a = 0, b = 0;
+            if (x.Length == y.Length)
+            {
+                double zy = 0, zx = 0, zy_square = 0, zx_square = 0, zxy = 0;
+                int n = x.Length;
+                for (int i = 0; i < n; i++)
+                {
+                    zy += y[i];
+                    zx += x[i];                    
+                    zxy += (x[i] * y[i]);
+                }
+                zy_square = Math.Pow(zy, 2);
+                zx_square = Math.Pow(zx, 2);
+                Console.WriteLine(string.Format($"zy {zy}, zx {zx}, zxy {zxy}")  );
+                a = (zy * zx_square - zx * zxy) / (n * zx_square - zx_square);
+                b = (n * zxy - zx * zy) / (n * zx_square - zx_square);
+            }            
+            return new Polynomial(new double[] { a, b });
+        }
     }
 
     //public static void AjCurMinCua(ComboBox cbxMetodos, double[,] SEL, double[,] xy, int n, TextBox txtResultado, TextBox txtDatosf)

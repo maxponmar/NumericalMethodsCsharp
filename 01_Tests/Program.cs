@@ -3,10 +3,8 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 
-//using NumericalMethods.RootFinding;
-using NumericalMethods.LinearAlgebraicEquations;
-using NumericalMethods.Optimization;
 using NumericalMethods;
+using NumericalMethods.CurveFitting.Least_Square_Regression;
 
 
 namespace _01_PruebasNumericalMethods
@@ -20,71 +18,18 @@ namespace _01_PruebasNumericalMethods
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // REMAINDER
+            // WRITE AN EXAMPLE FOR EVERY SINGLE METHOD
+            // OPTIMIZE POLYNOMIAL TOSTRING METHOD
             List<string> log = new List<string>();
+            
+            Console.WriteLine("Testing Linear Regression");
+            LinearRegression lr = new LinearRegression();
+            double[] testX = new double[] { 43, 21, 25, 42, 57, 59 };
+            double[] testY = new double[] { 99, 65, 79, 75, 87, 81 };
 
-            //Muller rf = new Muller();
-            //double r = rf.FindRoot("x^3 - 10", 2, out log);
-            //Console.WriteLine(r);
-
-            //Bairstow b = new Bairstow();
-            //log = b.FindRoot(new double[] { 1, 2, 3, 4 });
-
-            ThomasLU sel = new ThomasLU();
-
-            //double[,] a = new double[,] { {8, 9 }, { 1, 4 } };
-            //double[] b = new double[] { 6, 2 };
-
-            //double[] x = new double[3];
-            //double[] f = new double[] { 1, 1, 1 };
-            //double[] g = new double[] { 5, 5, 0 };
-            //double[] e = new double[] { 0, 6, 6 };
-            //double[] r = new double[] { 1, 2, 3 };
-
-            //sel.SolveTridiagonalSystem(f, g, e, r, out x);
-
-           // Brent GS = new Brent();
-
-            //Console.WriteLine(GS.Solve("2*sin(x)-(x^2 / 10)", 4, 6, out log)); 
-
-            //foreach (double i in x)
-            //{
-            //    Console.WriteLine(i);
-            //}
-
-            //foreach (string x in log)
-            //{
-            //    Console.WriteLine(x);
-            //}
-
-            //list2csv(log);
-            //Console.ReadKey();
-
-            //Polynomial p = new Polynomial(new double[] { 1, 0, 3,0,0,0 });
-            //Console.WriteLine("Degree - "+p.Degree);
-            //Console.WriteLine(p);
-            ////Console.WriteLine(p.Eval(2));
-            //Console.WriteLine("-----");
-
-
-            //Polynomial N = new Polynomial (new double[] { 1,2,3,4,5 });
-            //Polynomial D = new Polynomial (new double[] { 2,3,1});
-            //(Polynomial q , Polynomial r)= (N / D);
-
-            //Console.WriteLine(q);           
-            //Console.WriteLine(r);
-
-            //List<string> x = CSV_Tools.csv2list(@"D:\Documentos\00_Pruebas\xd.csv");
-            //foreach (string z in x)
-            //{
-            //    Console.WriteLine(z);
-            //}
-
-            double[,] t = CSV_Tools.csv2doubleArray(@"D:\Documentos\00_Pruebas\test.csv",1,1);
-            foreach (double z in t)
-            {
-                Console.WriteLine(z);
-            }
+            Polynomial polynomial = lr.Fit(testX, testY);
+            Console.WriteLine(polynomial);
         }       
     }
 }

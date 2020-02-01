@@ -245,11 +245,17 @@ namespace NumericalMethods
                                 if (coeficients[i] < 0)
                                 {
                                     temp = Math.Abs(coeficients[i]);
-                                    polynomialStr += string.Format($"- ({temp}x^{i})");
+                                    if (i == 1)
+                                        polynomialStr += string.Format($"- {temp}x");
+                                    else                                    
+                                        polynomialStr += string.Format($"- {temp}x^{i}");                                                                        
                                 }
                                 if (coeficients[i] > 0)
                                 {
-                                    polynomialStr += string.Format($"({coeficients[i]}x^{i})");
+                                    if (i == 1)
+                                        polynomialStr += string.Format($"{coeficients[i]}x");
+                                    else
+                                        polynomialStr += string.Format($"{coeficients[i]}x^{i}");
                                 }
                             }
                             else
@@ -258,11 +264,17 @@ namespace NumericalMethods
                                 if (coeficients[i] < 0)
                                 {
                                     temp = Math.Abs(coeficients[i]);
-                                    polynomialStr += string.Format($" - ({temp}x^{i})");
+                                    if (i == 1)
+                                        polynomialStr += string.Format($" - {temp}x");
+                                    else
+                                        polynomialStr += string.Format($" - {temp}x^{i}");
                                 }
                                 if (coeficients[i] > 0)
                                 {
-                                    polynomialStr += string.Format($" + ({coeficients[i]}x^{i})");
+                                    if (i == 1)
+                                        polynomialStr += string.Format($" + {coeficients[i]}x");
+                                    else
+                                        polynomialStr += string.Format($" + {coeficients[i]}x^{i}");
                                 }
                             }
                         }                        
