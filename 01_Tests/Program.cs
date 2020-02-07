@@ -5,7 +5,7 @@ using System.Linq;
 
 using NumericalMethods;
 using NumericalMethods.CurveFitting.Least_Square_Regression;
-
+using NumericalMethods.CurveFitting.Interpolation;
 
 namespace _01_PruebasNumericalMethods
 {
@@ -25,10 +25,14 @@ namespace _01_PruebasNumericalMethods
             
             Console.WriteLine("Testing Linear Regression");
             LinearRegression lr = new LinearRegression();
-            double[] testX = new double[] { 43, 21, 25, 42, 57, 59 };
-            double[] testY = new double[] { 99, 65, 79, 75, 87, 81 };
+            PolynomialRegression pr = new PolynomialRegression();
 
-            Polynomial polynomial = lr.Fit(testX, testY);
+            NewtonsDividedDifference ndd = new NewtonsDividedDifference();
+
+            double[] testX = new double[] { 1,4,6 };
+            double[] testY = new double[] { 0, 1.386294, 1.791759 };
+
+            Polynomial polynomial = ndd.Fit(testX, testY);
             Console.WriteLine(polynomial);
         }       
     }
