@@ -15,7 +15,7 @@ namespace NumericalMethods.CurveFitting.Least_Square_Regression
         public Polynomial Fit(double[] x, double[] y)
         {
             double a0 = 0, a1 = 0, a2 = 0;
-            if (x.Length == y.Length)
+            if (x.Length == y.Length && x.Length > 1)
             {
                 // system to solve
                 double[,] a = new double[3, 3];
@@ -43,9 +43,13 @@ namespace NumericalMethods.CurveFitting.Least_Square_Regression
                 LinearAlgebraicEquations.GaussElimination ge = new LinearAlgebraicEquations.GaussElimination();
                 ge.SolveSLE(a, b, out coeff);
 
-                a0 = coeff[0]; 
-                a1 = coeff[1]; 
+                a0 = coeff[0];
+                a1 = coeff[1];
                 a2 = coeff[2];
+            }
+            else
+            {
+                Console.WriteLine("The data set isn't compatible -> x.Length and y.Length must be the same and greater than 1");
             }
             return new Polynomial(new double[] { a0, a1, a2 });
         }

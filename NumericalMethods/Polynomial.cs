@@ -5,34 +5,21 @@ using System.Linq;
 
 namespace NumericalMethods
 {
-    public class Polynomial
+    public class Polynomial : ICloneable
     {
         private int degree;
         private double[] coeficients;
 
         public int Degree { get => degree; }
-        public double[] Coeficients 
-        { 
-            get => coeficients;
-            set 
-            {
-                coeficients = value;                
-                degree = coeficients.Length - 1;
-                deleteZeros();
-            }
-        }
-        // This method deletesd the last zeros of the polynomial, thats because they are not important (In my opinion)
-        private void deleteZeros()
+        public double[] Coeficients
         {
-            if (coeficients.Length - 1 > -1)
+            get => coeficients;
+            set
             {
-                if (coeficients[coeficients.Length - 1] == 0)
-                {
-                    Array.Resize(ref coeficients, coeficients.Length - 1);
-                    degree -= 1;
-                    deleteZeros();
-                }
-            }            
+                coeficients = value;
+                degree = coeficients.Length - 1;
+                //deleteZeros();
+            }
         }
 
         /// <summary>
@@ -43,7 +30,6 @@ namespace NumericalMethods
         {
             this.coeficients = coefficients;
             degree = coeficients.Length - 1;
-            deleteZeros();
         }
 
         /// <summary>
@@ -56,18 +42,51 @@ namespace NumericalMethods
             double res = coeficients[0];
             for (int i = 1; i < coeficients.Length; i++)
             {
-                res += Math.Pow(x, i) * coeficients[i];                
+                res += Math.Pow(x, i) * coeficients[i];
             }
             return res;
         }
 
+        /// <summary>
+        /// This method deletesd the last zeros of the polynomial
+        /// </summary>
+        public void deleteLastZeros()
+        {
+            if (coeficients.Length - 1 > -1)
+            {
+                if (coeficients[coeficients.Length - 1] == 0)
+                {
+                    Array.Resize(ref coeficients, coeficients.Length - 1);
+                    degree -= 1;
+                    //deleteZeros();
+                }
+            }
+        }
+
+        public object Clone()
+        {
+            //return (Polynomial)this;
+            return this.MemberwiseClone();
+        }
+        public static Polynomial operator +(double x, Polynomial p)
+        {
+            double[] coef = (double[])p.coeficients.Clone();
+            coef[0] += x;
+            return new Polynomial(coef);
+        }
+        public static Polynomial operator +(Polynomial p, double x)
+        {
+            double[] coef = (double[])p.coeficients.Clone();
+            coef[0] += x;
+            return new Polynomial(coef);
+        }
         public static Polynomial operator +(Polynomial p1, Polynomial p2)
         {
-            double[] newCoef = new double[] { };            
+            double[] newCoef = new double[] { };
             if (p1.degree > p2.degree)
-            {                
-                newCoef = new double[p1.degree+1];                
-                for (int i = 0; i < p1.degree+1; i++)
+            {
+                newCoef = new double[p1.degree + 1];
+                for (int i = 0; i < p1.degree + 1; i++)
                 {
                     if (i <= p2.degree)
                     {
@@ -81,8 +100,8 @@ namespace NumericalMethods
             }
             if (p1.degree < p2.degree)
             {
-                newCoef = new double[p2.degree+1];                
-                for (int i = 0; i < p2.degree+1; i++)
+                newCoef = new double[p2.degree + 1];
+                for (int i = 0; i < p2.degree + 1; i++)
                 {
                     if (i <= p1.degree)
                     {
@@ -96,9 +115,9 @@ namespace NumericalMethods
             }
             if (p1.degree == p2.degree)
             {
-                newCoef = new double[p1.degree+1];                
-                for (int i = 0; i < p1.degree+1; i++)
-                {                    
+                newCoef = new double[p1.degree + 1];
+                for (int i = 0; i < p1.degree + 1; i++)
+                {
                     newCoef[i] = p1.coeficients[i] + p2.coeficients[i];
                     //Console.WriteLine(newCoef[i]);
                 }
@@ -150,11 +169,19 @@ namespace NumericalMethods
 
             return new Polynomial(newCoef);
         }
-        
+        public static Polynomial operator -(Polynomial p)
+        {
+            double[] newCoef = (double[])p.coeficients.Clone();
+            for (int i = 0; i < newCoef.Length; i++)
+            {
+                newCoef[i] *= -1;
+            }
+            return new Polynomial(newCoef);
+        }
         public static Polynomial operator *(Polynomial p1, Polynomial p2)
         {
             int len = p1.coeficients.Length + p2.coeficients.Length - 1;
-            double[] newCoef = new double[len];                        
+            double[] newCoef = new double[len];
 
             for (int i = 0; i < p1.coeficients.Length; i++)
             {
@@ -163,11 +190,19 @@ namespace NumericalMethods
             }
             return new Polynomial(newCoef);
         }
-        //static void PolyMultiply(double[] p, double m)
         public static Polynomial operator *(Polynomial p, double m)
         {
-            double[] newCoef = new double[p.coeficients.Length];
-            for (int i = 0; i < p.coeficients.Length; ++i)
+            double[] newCoef = (double[])p.coeficients.Clone();
+            for (int i = 0; i < newCoef.Length; ++i)
+            {
+                newCoef[i] *= m;
+            }
+            return new Polynomial(newCoef);
+        }
+        public static Polynomial operator *(double m, Polynomial p)
+        {
+            double[] newCoef = (double[])p.coeficients.Clone();
+            for (int i = 0; i < newCoef.Length; ++i)
             {
                 newCoef[i] *= m;
             }
@@ -216,9 +251,10 @@ namespace NumericalMethods
                 r
             );
         }
-       
+
         public override string ToString()
         {
+            // If someone can help me to make this more clear and efficient I´ll apreciate it
             byte flag = 0;
             string polynomialStr = "";
             double temp = 0;
@@ -231,7 +267,7 @@ namespace NumericalMethods
                 for (int i = 0; i < coeficients.Length; i++)
                 {
                     if (coeficients[i] != 0)
-                    {                        
+                    {
                         if (i == 0)
                         {
                             flag = 2;
@@ -244,18 +280,34 @@ namespace NumericalMethods
                             {
                                 if (coeficients[i] < 0)
                                 {
-                                    temp = Math.Abs(coeficients[i]);
-                                    if (i == 1)
-                                        polynomialStr += string.Format($"- {temp}x");
-                                    else                                    
-                                        polynomialStr += string.Format($"- {temp}x^{i}");                                                                        
+                                    if (coeficients[i] == -1)
+                                        if (i == 1)
+                                            polynomialStr += string.Format($"-x");
+                                        else
+                                            polynomialStr += string.Format($"-x^{i}");
+                                    else
+                                    {
+                                        temp = Math.Abs(coeficients[i]);
+                                        if (i == 1)
+                                            polynomialStr += string.Format($"- {temp}x");
+                                        else
+                                            polynomialStr += string.Format($"- {temp}x^{i}");
+                                    }
                                 }
                                 if (coeficients[i] > 0)
                                 {
-                                    if (i == 1)
-                                        polynomialStr += string.Format($"{coeficients[i]}x");
+                                    if (coeficients[i] == 1)
+                                        if (i == 1)
+                                            polynomialStr += string.Format($"x");
+                                        else
+                                            polynomialStr += string.Format($"x^{i}");
                                     else
-                                        polynomialStr += string.Format($"{coeficients[i]}x^{i}");
+                                    {
+                                        if (i == 1)
+                                            polynomialStr += string.Format($"{coeficients[i]}x");
+                                        else
+                                            polynomialStr += string.Format($"{coeficients[i]}x^{i}");
+                                    }
                                 }
                             }
                             else
@@ -263,25 +315,41 @@ namespace NumericalMethods
                                 flag = 2;
                                 if (coeficients[i] < 0)
                                 {
-                                    temp = Math.Abs(coeficients[i]);
-                                    if (i == 1)
-                                        polynomialStr += string.Format($" - {temp}x");
+                                    if (coeficients[i] == -1)
+                                        if (i == 1)
+                                            polynomialStr += string.Format($" - x");
+                                        else
+                                            polynomialStr += string.Format($" - x^{i}");
                                     else
-                                        polynomialStr += string.Format($" - {temp}x^{i}");
+                                    {
+                                        temp = Math.Abs(coeficients[i]);
+                                        if (i == 1)
+                                            polynomialStr += string.Format($" - {temp}x");
+                                        else
+                                            polynomialStr += string.Format($" - {temp}x^{i}");
+                                    }
                                 }
                                 if (coeficients[i] > 0)
                                 {
-                                    if (i == 1)
-                                        polynomialStr += string.Format($" + {coeficients[i]}x");
+                                    if (coeficients[i] == 1)
+                                        if (i == 1)
+                                            polynomialStr += string.Format($" + x");
+                                        else
+                                            polynomialStr += string.Format($" + x^{i}");
                                     else
-                                        polynomialStr += string.Format($" + {coeficients[i]}x^{i}");
+                                    {
+                                        if (i == 1)
+                                            polynomialStr += string.Format($" + {coeficients[i]}x");
+                                        else
+                                            polynomialStr += string.Format($" + {coeficients[i]}x^{i}");
+                                    }
                                 }
                             }
-                        }                        
+                        }
                     }
                 }
-                return polynomialStr; 
-            }            
+                return polynomialStr;
+            }
         }
     }
 }

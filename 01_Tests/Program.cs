@@ -23,17 +23,17 @@ namespace _01_PruebasNumericalMethods
             // OPTIMIZE POLYNOMIAL TOSTRING METHOD
             List<string> log = new List<string>();
             
-            Console.WriteLine("Testing Linear Regression");
+            Console.WriteLine("Testing NDD");
             LinearRegression lr = new LinearRegression();
             PolynomialRegression pr = new PolynomialRegression();
 
             NewtonsDividedDifference ndd = new NewtonsDividedDifference();
-
-            double[] testX = new double[] { 1,4,6 };
-            double[] testY = new double[] { 0, 1.386294, 1.791759 };
+;           double[] testX = new double[] { -3, -2, 0, 4 };
+            double[] testY = new double[] { 5, 8, 4, 2 };
 
             Polynomial polynomial = ndd.Fit(testX, testY);
-            Console.WriteLine(polynomial);
+            
+            Console.WriteLine(polynomial);                       
         }       
     }
 }
