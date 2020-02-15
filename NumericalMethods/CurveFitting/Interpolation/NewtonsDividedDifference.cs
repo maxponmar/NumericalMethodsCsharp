@@ -14,94 +14,53 @@ namespace NumericalMethods.CurveFitting.Interpolation
         /// <returns>Returns a polynomial of degree 2</returns>
         public Polynomial Fit(double[] x, double[] y)
         {
-            return new Polynomial(NDD(x,y));
-        }
+            // The first difference is y[0] thats why it start with this value
+            Polynomial result = new Polynomial(new double[] { y[0] });
 
-        private static double[] NDD(double[] X, double[] Y)
-        {
-            if (X.Length == Y.Length)
+            if (x.Length == y.Length && x.Length > 1)
             {
-                int m = X.Length;
-                double[] FX, Bn;
-                double[,] polinomio;
-                double[,] T;
-                int A = m, B = 0, C, D;
-                C = A - 1;
-                T = new double[(A - 1), (A - 1)]; //obtener diferencias divididas
-                while (B <= (C - 1))
-                {
-                    T[B, 0] = ((Y[B + 1] - Y[B]) / (X[B + 1] - X[B]));
-                    B += 1;
-                }
-                D = 1;
-                while (D <= (C - 1))
-                {
-                    B = D;
-                    while (B <= (C - 1))
-                    {
-                        T[B, D] = ((T[B, (D - 1)] - T[(B - 1), (D - 1)]) / (X[B + 1] - X[B - D]));
-                        B += 1;
-                    }
-                    D += 1;
-                }
-                Bn = new double[m]; //acomodar difrencias divididas en matriz Bn
-                for (int i = 0; i < m; i++)
-                {
-                    if (i == 0)
-                    {
-                        Bn[0] = Y[0];
-                    }
-                    else
-                    {
-                        Bn[i] = T[(i - 1), (i - 1)];
-                    }
-                }
-                // crear matriz donde se guarden los polinomios
+                int n = x.Length;
 
-                polinomio = new double[m, m];// polinomio de Newton;
-                double[] p = new double[m + 1];
-                p[0] = -X[0]; p[1] = 1;//p = (x-x1)
+                // This poylnomial array store the polynomials that are related to the divded differences   
 
-                polinomio[0, 0] = Bn[0]; // primera fila
-                polinomio[1, 0] = -X[0]; polinomio[1, 1] = 1;// segunda fila
-                for (int i = 2; i < m; i++) // filas que quedan
+                Polynomial[] polynomials = new Polynomial[n - 1];
+
+                // Divided differences table
+                double[,] differences = new double[n - 1, n - 1];
+
+                // Calculating differences table, it´s complicated to explain this algorithm to me here, but perhaps I will explain it on the future 
+                // By seeing a difference table example on the internet, you should understand this algorithm
+                for (int j = 0; j < n - 1; j++)  // Cols
                 {
-                    var b = new double[] { -X[i - 1], 1 };
-                    p = Multiply(p, b);
-                    for (int j = 0; j < m; j++)
+                    for (int i = 0; i < n - 1; i++) // Rows
                     {
-                        polinomio[i, j] = p[j];
+                        if (j == 0)
+                            differences[i, j] = (y[i + 1] - y[i]) / (x[i + 1] - x[i]);
+                        else
+                        {
+                            if (i >= j)
+                                differences[i, j] = (differences[i, j - 1] - differences[i - 1, j - 1]) / (x[i + 1] - x[i - j]);
+                        }
                     }
                 }
 
-                for (int i = 1; i < m; i++) // multiplicar las filas por bn
+                // Getting the polynomials 
+                polynomials[0] = new Polynomial(new double[] { -x[0], 1 });
+                for (int i = 1; i < n - 1; i++)
                 {
-                    for (int j = 0; j < m; j++)
-                    {
-                        polinomio[i, j] *= Bn[i];
-                    }
+                    polynomials[i] = new Polynomial(new double[] { -x[i], 1 });
+                    polynomials[i] *= polynomials[i - 1];
                 }
-                FX = new double[m];
-                for (int i = 0; i < m; i++) // sumar colmnas para obtener ecuacion final
+
+                for (int i = 0; i < n - 1; i++)
                 {
-                    for (int j = 0; j < m; j++)
-                    {
-                        FX[i] += polinomio[j, i];
-                    }
+                    Polynomial temp = differences[i, i] * polynomials[i];
+                    result = result + temp;
                 }
-                return FX;
             }
-            return new double[0];
-        }
-        private static double[] Multiply(double[] a, double[] b)
-        {
-            var result = new double[a.Length + b.Length - 1];
-            for (int i = 0; i < a.Length; i++)
+            else
             {
-                for (int j = 0; j < b.Length; j++)
-                {
-                    result[i + j] += a[i] * b[j];
-                }
+                Console.WriteLine("The dataset is not compatible -> x.Length and y.Length must be the same and greater than 1");
             }
             return result;
         }
