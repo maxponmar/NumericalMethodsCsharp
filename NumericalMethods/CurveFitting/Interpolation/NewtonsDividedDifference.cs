@@ -7,11 +7,11 @@ namespace NumericalMethods.CurveFitting.Interpolation
     public class NewtonsDividedDifference
     {
         /// <summary>
-        /// This method fits the given data with polynomial regression method, limited to a 2nd degree polynomial (Return a Polynomial object)
+        /// This method fits the given data with Newton´s Divided Differences
         /// </summary>
         /// <param name="x">Independent data</param>
         /// <param name="y">Dependent data</param>
-        /// <returns>Returns a polynomial of degree 2</returns>
+        /// <returns>Returns a polynomial</returns>
         public Polynomial Fit(double[] x, double[] y)
         {
             // The first difference is y[0] thats why it start with this value
