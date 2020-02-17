@@ -1,1 +1,7 @@
-.vs
+/.vs/*
+/01_Tests/bin/*
+/01_Tests/obj/*
+/MathParser/bin/*
+/MathParser/obj/*
+/NumericalMethods/bin/*
+/NumericalMethods/obj/*
