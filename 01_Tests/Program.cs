@@ -28,10 +28,12 @@ namespace _01_PruebasNumericalMethods
             PolynomialRegression pr = new PolynomialRegression();
 
             NewtonsDividedDifference ndd = new NewtonsDividedDifference();
-;           double[] testX = new double[] { -3, -2, 0, 4 };
-            double[] testY = new double[] { 5, 8, 4, 2 };
+            Lagrange lagrange = new Lagrange();
 
-            Polynomial polynomial = ndd.Fit(testX, testY);
+;           double[] testX = new double[] { 1, 3, 5, 7 };
+            double[] testY = new double[] { -2, 1, 3, -3 };
+
+            Polynomial polynomial = lagrange.Fit(testX, testY);
             
             Console.WriteLine(polynomial);                       
         }       

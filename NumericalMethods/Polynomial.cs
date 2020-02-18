@@ -208,6 +208,10 @@ namespace NumericalMethods
             }
             return new Polynomial(newCoef);
         }
+        public static Polynomial operator /(Polynomial p, double m)
+        {
+            return (1 / m) * p;
+        }
         public static (Polynomial, Polynomial) operator /(Polynomial p1, Polynomial p2)
         {
             List<double> num = p1.coeficients.ToList<double>();
