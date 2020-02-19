@@ -10,6 +10,12 @@ namespace NumericalMethods.Optimization
     /// </summary>
     public class GoldenSection
     {
+        private double lastResult;
+        /// <summary>
+        /// This value save the last result
+        /// </summary>
+        public double LastResult { get => lastResult; }
+
         private MathParser mathParser = new MathParser();
         private double px, pfx;
         /// <summary>
@@ -93,12 +99,14 @@ namespace NumericalMethods.Optimization
                         {
                             //txtResultado.AppendText(string.Format("iteracion {0} - f({1}) = {2} \r\n", i + 1, xopt, fxx));
                             px = xopt; pfx = fxx;
+                            lastResult = xopt;
                             return xopt;
                             //break;
                         }
                         //txtResultado.AppendText(string.Format("iteracion {0} - f({1}) = {2} \r\n", i + 1, xopt, fxx));
                         px = xopt; pfx = fxx;
                     }
+                    lastResult = xopt;
                     return xopt;
                 }
                 if (mode == 0)
@@ -157,18 +165,22 @@ namespace NumericalMethods.Optimization
                         {
                             //txtResultado.AppendText(string.Format("iteracion {0} - f({1}) = {2} \r\n", i + 1, xopt, fxx));
                             px = xopt; pfx = fxx;
+                            lastResult = xopt;
                             return xopt;
                         }
                         //txtResultado.AppendText(string.Format("iteracion {0} - f({1}) = {2} \r\n", i + 1, xopt, fxx));
                         px = xopt; pfx = fxx;
                     }
+                    lastResult = xopt;
                     return xopt;
                 }
             }
             else
             {
+                lastResult = -1;
                 return -1;
             }
+            lastResult = xopt;
             return xopt;           
         }
 
@@ -257,12 +269,14 @@ namespace NumericalMethods.Optimization
                         {
                             //txtResultado.AppendText(string.Format("iteracion {0} - f({1}) = {2} \r\n", i + 1, xopt, fxx));
                             px = xopt; pfx = fxx;
+                            lastResult = xopt;
                             return xopt;
                             //break;
                         }
                         //txtResultado.AppendText(string.Format("iteracion {0} - f({1}) = {2} \r\n", i + 1, xopt, fxx));
                         px = xopt; pfx = fxx;
                     }
+                    lastResult = xopt;
                     return xopt;
                 }
                 if (mode == 0)
@@ -322,18 +336,22 @@ namespace NumericalMethods.Optimization
                         {
                             //txtResultado.AppendText(string.Format("iteracion {0} - f({1}) = {2} \r\n", i + 1, xopt, fxx));
                             px = xopt; pfx = fxx;
+                            lastResult = xopt;
                             return xopt;
                         }
                         //txtResultado.AppendText(string.Format("iteracion {0} - f({1}) = {2} \r\n", i + 1, xopt, fxx));
                         px = xopt; pfx = fxx;
                     }
+                    lastResult = xopt;
                     return xopt;
                 }
             }
             else
             {
+                lastResult = -1;
                 return -1;
             }
+            lastResult = xopt;
             return xopt;
         }
     }

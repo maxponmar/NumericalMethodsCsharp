@@ -9,6 +9,12 @@ namespace NumericalMethods.RootFinding
     /// </summary>
     public class False_Position
     {
+        private double lastResult;
+        /// <summary>
+        /// This value save the last result
+        /// </summary>
+        public double LastResult { get => lastResult; }
+
         MathParser mathParser = new MathParser();
         /// <summary>
         /// (Bracketing Method) This method calculate the root of the given function between x1 and x2 values, it return the result as dobule
@@ -51,6 +57,7 @@ namespace NumericalMethods.RootFinding
                 if (error < tolerance) { break; }
                 if (xr == temp) { break; }
             }
+            lastResult = xr;
             return xr;
         }
         /// <summary>
@@ -98,6 +105,7 @@ namespace NumericalMethods.RootFinding
                 if (error < tolerance) { log.Add(string.Format("Root found in the iteration #{0} with {1}% of tolerance", i + 1, tolerance * 100)); break; }
                 if (xr == temp) { log.Add("Infinite loop"); break; }
             }
+            lastResult = xr;
             return xr;
         }
     }

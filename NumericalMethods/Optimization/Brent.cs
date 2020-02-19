@@ -10,6 +10,12 @@ namespace NumericalMethods.Optimization
     /// </summary>
     public class Brent
     {
+        private double lastResult;
+        /// <summary>
+        /// This value save the last result
+        /// </summary>
+        public double LastResult { get => lastResult; }
+
         private MathParser mathParser = new MathParser();
         private double px, pfx;
         
@@ -98,6 +104,7 @@ namespace NumericalMethods.Optimization
                 //txtResultado.AppendText(string.Format("iteracion {0} - f({1}) = {2} \r\n", i, u, fu));
                 px = u; pfx = fu;                
             } while (Math.Abs(e) > tol);
+            lastResult = px;
             return px;
         }
 
@@ -192,6 +199,7 @@ namespace NumericalMethods.Optimization
                 log.Add(string.Format($"{i},{u},{fu}"));
                 px = u; pfx = fu;
             } while (Math.Abs(e) > tol);
+            lastResult = px;
             return px;
         }
     }

@@ -6,6 +6,12 @@ namespace NumericalMethods.CurveFitting.Interpolation
 {
     public class NewtonsDividedDifference
     {
+        private Polynomial lastResult;
+        /// <summary>
+        /// This value save the last result
+        /// </summary>
+        public Polynomial LastResult { get => lastResult; }
+
         /// <summary>
         /// This method fits the given data with Newton´s Divided Differences
         /// </summary>
@@ -62,6 +68,7 @@ namespace NumericalMethods.CurveFitting.Interpolation
             {
                 Console.WriteLine("The dataset is not compatible -> x.Length and y.Length must be the same and greater than 1");
             }
+            lastResult = (Polynomial)result.Clone();
             return result;
         }
     }

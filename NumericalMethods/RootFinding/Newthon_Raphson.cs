@@ -5,12 +5,18 @@ using ReadFunction;
 
 
 namespace NumericalMethods.RootFinding
-{
+{    
     /// <summary>
     /// This class allows you to use the Newton-Raphson's method for root finding
     /// </summary>
     public class Newthon_Raphson
     {
+        private double lastResult;
+        /// <summary>
+        /// This value save the last result
+        /// </summary>
+        public double LastResult { get => lastResult; }
+
         private MathParser mathParser = new MathParser();
         /// <summary>
         /// (Open Method) This method calculates the root of a f(x) function using Newton-Raphson's method, you could use the numerical derivative (default) or enter the symbolic derivative.
@@ -66,7 +72,8 @@ namespace NumericalMethods.RootFinding
                     if (error < tolerance) { break; }
                     if (xr == temp) { break; }
                 }
-            }            
+            }
+            lastResult = xr;
             return xr;
         }
         /// <summary>
@@ -130,6 +137,7 @@ namespace NumericalMethods.RootFinding
                     if (xr == temp) { log.Add("Infinite loop"); break; }
                 }
             }
+            lastResult = xr;
             return xr;
         }
     }

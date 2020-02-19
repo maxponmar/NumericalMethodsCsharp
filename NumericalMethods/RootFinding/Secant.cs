@@ -7,10 +7,16 @@ namespace NumericalMethods.RootFinding
 {
     public class Secant
     {
+        private double lastResult;
+        /// <summary>
+        /// This value save the last result
+        /// </summary>
+        public double LastResult { get => lastResult;}
+
         /// <summary>
         /// This class allows you to use the secant method for root finding
         /// </summary>
-        private MathParser mathParser = new MathParser();
+        private MathParser mathParser = new MathParser();        
 
         /// <summary>
         /// (Open Method) This method calculates the root of a f(x) function using Modified Secant method.
@@ -35,6 +41,7 @@ namespace NumericalMethods.RootFinding
                 if (error < tolerance) { break; }
                 if (xr == temp) { break; }
             }
+            lastResult = xr;
             return xr;
         }
         /// <summary>
@@ -64,6 +71,7 @@ namespace NumericalMethods.RootFinding
                 if (error < tolerance) { log.Add(string.Format("Root found in the iteration #{0} with {1}% of tolerance", i + 1, tolerance * 100)); break; }
                 if (xr == temp) { log.Add("Infinite loop"); break; }
             }
+            lastResult = xr;
             return xr;
         }
     }

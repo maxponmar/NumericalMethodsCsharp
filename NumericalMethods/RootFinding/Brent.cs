@@ -11,6 +11,12 @@ namespace NumericalMethods.RootFinding
     /// </summary>
     public class Brent
     {
+        private double lastResult;
+        /// <summary>
+        /// This value save the last result
+        /// </summary>
+        public double LastResult { get => lastResult; }
+
         private MathParser mathParser = new MathParser();
 
         /// <summary>
@@ -42,6 +48,7 @@ namespace NumericalMethods.RootFinding
 
             if (fa * fb > 0.0)
             {
+                lastResult = -1;
                 return -1;
                 //MessageBox.Show("Lo límites no son adecuados, asegurate de en encierran a la raíz", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -98,7 +105,11 @@ namespace NumericalMethods.RootFinding
                 else
                     b -= tol;
                 if (i == maxIte)
+                {
+                    lastResult = b;
                     return b;
+                }
+                    
 
                 //convEqn.ProgrammaticallyParse("let x =" + b);
                 //fb = convEqn.Parse(g);
@@ -109,7 +120,11 @@ namespace NumericalMethods.RootFinding
                     goto label_ext;
             }
             else
+            {
+                lastResult = b;
                 return b;
+            }
+                
         }
         /// <summary>
         /// (Hybrid) This method calculates the root of a f(x) function using Brent's method.       
@@ -143,6 +158,7 @@ namespace NumericalMethods.RootFinding
 
             if (fa * fb > 0.0)
             {
+                lastResult = -1;
                 return -1;
                 //MessageBox.Show("Lo límites no son adecuados, asegurate de en encierran a la raíz", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -200,7 +216,10 @@ namespace NumericalMethods.RootFinding
                 else
                     b -= tol;
                 if (i == maxIte)
+                {
+                    lastResult = b;
                     return b;
+                }                    
 
                 //convEqn.ProgrammaticallyParse("let x =" + b);
                 //fb = convEqn.Parse(g);
@@ -211,7 +230,10 @@ namespace NumericalMethods.RootFinding
                     goto label_ext;
             }
             else
+            {
+                lastResult = b;
                 return b;
+            }
         }
     }
 }

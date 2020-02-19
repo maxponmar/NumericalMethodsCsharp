@@ -12,6 +12,10 @@ namespace NumericalMethods.RootFinding
     public class Bairstow
     {
         private List<string> results;
+        /// <summary>
+        /// This List save the last result
+        /// </summary>
+        public List<string> Results { get => results;}
 
         private int Bairstow_algorithm(double[] a, double r, double s, int g)
         {
@@ -21,7 +25,7 @@ namespace NumericalMethods.RootFinding
 
             if (g == 1 && a[1] != 0)
             {
-                results.Add((-a[0] / a[1]).ToString());
+                Results.Add((-a[0] / a[1]).ToString());
                 return 0;
             }
 
@@ -38,8 +42,8 @@ namespace NumericalMethods.RootFinding
                     x1 = (-a[1] - Math.Sqrt(d)) / (2 * a[2]);
                     x2 = (-a[1] + Math.Sqrt(d)) / (2 * a[2]);
                 }
-                results.Add(x1.ToString());
-                results.Add(x2.ToString());
+                Results.Add(x1.ToString());
+                Results.Add(x2.ToString());
                 return 0;
             }
             int n = a.Length; int i = n - 3;
@@ -80,8 +84,8 @@ namespace NumericalMethods.RootFinding
                     x1 = (r - Math.Sqrt(dis)) / 2;
                     x2 = (r + Math.Sqrt(dis)) / 2;
                 }
-                results.Add(x1.ToString());
-                results.Add(x2.ToString());
+                Results.Add(x1.ToString());
+                Results.Add(x2.ToString());
                 double[] temp = new double[b.Length - 2];
 
                 for (int j = 2; j < b.Length; j++)
@@ -106,7 +110,7 @@ namespace NumericalMethods.RootFinding
             double r = random.NextDouble();
             double s = random.NextDouble();
             Bairstow_algorithm(a, r, s, g);
-            return results;
+            return Results;
         }
     }
 }

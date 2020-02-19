@@ -10,6 +10,12 @@ namespace NumericalMethods.RootFinding
     /// </summary>
     public class Muller
     {
+        private double lastResult;
+        /// <summary>
+        /// This value save the last result
+        /// </summary>
+        public double LastResult { get => lastResult; }
+
         private MathParser mathParser = new MathParser();
 
         /// <summary>
@@ -63,6 +69,7 @@ namespace NumericalMethods.RootFinding
                 x1 = x2;
                 x2 = xr;
             }
+            lastResult = xr;
             return xr;
         }
         /// <summary>

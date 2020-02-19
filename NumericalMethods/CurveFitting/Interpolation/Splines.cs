@@ -6,7 +6,9 @@ namespace NumericalMethods.CurveFitting.Interpolation
 {
     public class SplinesInterpolation
     {
-        public Dictionary<double[], Polynomial> Splines = new Dictionary<double[], Polynomial>();    
+        private Dictionary<double[], Polynomial> _Splines = new Dictionary<double[], Polynomial>();
+
+        public Dictionary<double[], Polynomial> Splines { get => Splines;}
 
         /// <summary>
         /// This method fits the given data using Splines, you can choose 1st, 2nd or 3th degree
@@ -22,7 +24,7 @@ namespace NumericalMethods.CurveFitting.Interpolation
             if (x.Length == y.Length && x.Length > 1)
             {
                 // First, clear splines list
-                this.Splines.Clear();
+                this._Splines.Clear();
                 switch (type)
                 {
                     case 1:
@@ -36,7 +38,7 @@ namespace NumericalMethods.CurveFitting.Interpolation
                             _y = new double[] { y[i], y[i + 1] };
                             Lagrange lagrange = new Lagrange();
                             // Adding splines
-                            this.Splines.Add(new double[] { x[i], x[i + 1] }, lagrange.Fit(_x, _y));                            
+                            this._Splines.Add(new double[] { x[i], x[i + 1] }, lagrange.Fit(_x, _y));                            
                         }
                         break;
                     #endregion
@@ -114,7 +116,7 @@ namespace NumericalMethods.CurveFitting.Interpolation
                                     count++;
                                 }
                                 //Console.WriteLine(x[i]+"-"+x[i+1]);
-                                Splines.Add(new double[] { x[i], x[i + 1] }, new Polynomial(coef));
+                                _Splines.Add(new double[] { x[i], x[i + 1] }, new Polynomial(coef));
                                 coef = new double[3];                                
                             }                                             
                         }                            
@@ -216,7 +218,7 @@ namespace NumericalMethods.CurveFitting.Interpolation
                                     count++;
                                 }
                                 //Console.WriteLine(x[i]+"-"+x[i+1]);
-                                Splines.Add(new double[] { x[i], x[i + 1] }, new Polynomial(coef));
+                                _Splines.Add(new double[] { x[i], x[i + 1] }, new Polynomial(coef));
                                 coef = new double[4];
                             }
                         }                            

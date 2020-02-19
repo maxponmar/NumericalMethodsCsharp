@@ -9,6 +9,12 @@ namespace NumericalMethods.RootFinding
     /// </summary>
     public class Fixed_Point
     {
+        private double lastResult;
+        /// <summary>
+        /// This value save the last result
+        /// </summary>
+        public double LastResult { get => lastResult; }
+
         MathParser mathParser = new MathParser();
         /// <summary>
         /// (Open Method) This method calculates the root of a f(x) function using Simple Fixed Poitn method given g(x) function, you could find g(x) like this: g(x) = f(x) + x
@@ -34,6 +40,7 @@ namespace NumericalMethods.RootFinding
                 if (error < tolerance) { break; }
                 if (xr == temp) { break; }
             }
+            lastResult = xr;
             return xr;
         }
         /// <summary>
@@ -64,6 +71,7 @@ namespace NumericalMethods.RootFinding
                 if (error < tolerance) { log.Add(string.Format("Root found in the iteration #{0} with {1}% of tolerance", i + 1, tolerance * 100)); break; }
                 if (xr == temp) { log.Add("Infinite loop"); break; }
             }
+            lastResult = xr;
             return xr;
         }
     }

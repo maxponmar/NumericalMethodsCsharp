@@ -6,6 +6,12 @@ namespace NumericalMethods.CurveFitting.Least_Square_Regression
 {
     public class PolynomialRegression
     {
+        private Polynomial lastResult;
+        /// <summary>
+        /// This value save the last result
+        /// </summary>
+        public Polynomial LastResult { get => lastResult; }
+
         /// <summary>
         /// This method fits the given data with polynomial regression method, limited to a 2nd degree polynomial (Return a Polynomial object)
         /// </summary>
@@ -51,7 +57,8 @@ namespace NumericalMethods.CurveFitting.Least_Square_Regression
             {
                 Console.WriteLine("The data set isn't compatible -> x.Length and y.Length must be the same and greater than 1");
             }
-            return new Polynomial(new double[] { a0, a1, a2 });
+            lastResult = new Polynomial(new double[] { a0, a1, a2 });
+            return (Polynomial)lastResult.Clone();
         }
     }
 }
