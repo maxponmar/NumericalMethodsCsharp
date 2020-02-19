@@ -6,6 +6,7 @@ using System.Linq;
 using NumericalMethods;
 using NumericalMethods.CurveFitting.Least_Square_Regression;
 using NumericalMethods.CurveFitting.Interpolation;
+using NumericalMethods.CurveFitting.FourierApproximation;
 
 namespace _01_PruebasNumericalMethods
 {
@@ -30,19 +31,16 @@ namespace _01_PruebasNumericalMethods
             NewtonsDividedDifference ndd = new NewtonsDividedDifference();
             Lagrange lagrange = new Lagrange();
 
-;           double[] testX = new double[] { 1, 3, 5, 7 };
-            double[] testY = new double[] { -2, 1, 3, -3 };
+;           double[] testX = new double[] { 1,2,3,4 };
+            double[] testY = new double[] { 1,5,3,1 };
 
             //Polynomial polynomial = lagrange.Fit(testX, testY);
 
             //Console.WriteLine(polynomial);                       
 
-            SplinesInterpolation splines = new SplinesInterpolation();
-            splines.Fit(testX, testY, 3);
-            foreach (Polynomial polynomial in splines.Splines.Values)
-            {
-                Console.WriteLine(polynomial);
-            }
+            NumericalMethods.CurveFitting.FourierApproximation.FourierSeries fft = new NumericalMethods.CurveFitting.FourierApproximation.FourierSeries();
+            fft.Fit(testX, testY, n:3);
+            Console.WriteLine(fft.LastResult.ToString());
         }       
     }
 }

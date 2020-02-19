@@ -6,28 +6,61 @@ namespace NumericalMethods.CurveFitting.FourierApproximation
 {
     public class FourierSeries
     {
-        private Dictionary<double[], Polynomial> Splines = new Dictionary<double[], Polynomial>();
-
-        public Dictionary<double[], Polynomial> Splines1 { get => Splines; }
+        private FourierSerie lastResult;
+        /// <summary>
+        /// This value save the last result
+        /// </summary>
+        public FourierSerie LastResult { get => lastResult; }
 
         /// <summary>
-        /// This method fits the given data using Splines, you can choose 1st, 2nd or 3th degree
-        /// The result will be stored in "Splines" Directory (object attribute)
-        /// The values are polynomials of 1st, 2nd or 3th degree and the Keys are their respective limits
-        /// You can print spline object to get an idea of the explanation above
+        /// This method calculates the Fourier serie given a dataset
+        /// The result is saves as an FourierSerie Object
+        /// The time samples need to be equally separated (e.g. 0.1-0.2-0.3, or 1-2-3)
         /// </summary>
         /// <param name="x">Independent data</param>
         /// <param name="y">Dependent data</param>
-        /// <param name="type">Choose the degree (3 by default)</param>
-        public void Fit(double[] x, double[] y, int type = 3)
+        /// <param name="n">Number of armonics to be calculated</param>
+        public FourierSerie Fit(double[] x, double[] y, int n = 3)
         {
+            FourierSerie result = new FourierSerie(0, n);
             if (x.Length == y.Length && x.Length > 1)
-            {
-
+            {                
+                //int N = 0, n = 0;                
+                double tao, deltaT;
+                deltaT = x[1] - x[0];
+                // N = dataset size
+                double N = x.Length;
+                tao = deltaT * N;
+                double Wn = 2 * Math.PI / tao;
+                result.Wn = Wn;
+                double zx = 0, zxcos = 0, zxsen = 0, a0;                
+                // X ZUM
+                for (int i = 0; i < N; i++)                
+                    zx += x[i];            
+                
+                a0 = (2.0 / N) * zx;
+                // XCOS Y XSEN ZUMS                        
+                for (int i = 1; i < n+1; i++)
+                {                    
+                    for (int j = 0; j < N; j++)
+                    {
+                        //Console.WriteLine((x[j] * Math.Cos((2.0 * Math.PI * i * y[j]) / tao)));
+                        zxcos += (y[j] * Math.Cos((2.0 * Math.PI * i * x[j]) / tao));
+                        zxsen += (y[j] * Math.Sin((2.0 * Math.PI * i * x[j]) / tao));
+                    }
+                    result.An[i - 1] = (2 / N) * zxcos;
+                    result.Bn[i - 1] = (2 / N) * zxsen;                    
+                    zxcos = 0; zxsen = 0;
+                }
+                result.A0 = a0 / 2;
+                lastResult = (FourierSerie)result.Clone();
+                return result;
             }
             else
             {
                 Console.WriteLine("The dataset is not compatible -> x.Length and y.Length must be the same and greater than 1");
+                lastResult = (FourierSerie)result.Clone();
+                return result;
             }
         }
     }
