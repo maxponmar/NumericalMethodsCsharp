@@ -33,9 +33,16 @@ namespace _01_PruebasNumericalMethods
 ;           double[] testX = new double[] { 1, 3, 5, 7 };
             double[] testY = new double[] { -2, 1, 3, -3 };
 
-            Polynomial polynomial = lagrange.Fit(testX, testY);
-            
-            Console.WriteLine(polynomial);                       
+            //Polynomial polynomial = lagrange.Fit(testX, testY);
+
+            //Console.WriteLine(polynomial);                       
+
+            SplinesInterpolation splines = new SplinesInterpolation();
+            splines.Fit(testX, testY, 3);
+            foreach (Polynomial polynomial in splines.Splines.Values)
+            {
+                Console.WriteLine(polynomial);
+            }
         }       
     }
 }
