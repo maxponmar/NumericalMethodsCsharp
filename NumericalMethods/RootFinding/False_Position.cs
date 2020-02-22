@@ -9,11 +9,11 @@ namespace NumericalMethods.RootFinding
     /// </summary>
     public class False_Position
     {
-        private double lastResult;
+        private double[] lastResult = new double[3];
         /// <summary>
-        /// This value save the last result
+        /// This value save the last result [0] x, [1] fx, [2] error
         /// </summary>
-        public double LastResult { get => lastResult; }
+        public double[] LastResult { get => lastResult; }
 
         MathParser mathParser = new MathParser();
         /// <summary>
@@ -23,10 +23,10 @@ namespace NumericalMethods.RootFinding
         /// <param name="xl">This is the lower bound of the root</param>
         /// <param name="xu">This is the upper bound of the root</param>
         /// <param name="maxIte">Maximum number of iterations, default = 100</param>
-        /// <param name="tolerance">This is the tolerance you want to use, default = 0.01 (1%)</param>
-        public double FindRoot(string function, double xl, double xu, int maxIte = 100, double tolerance = 0.01)
+        /// <param name="tolerance">This is the tolerance you want to use, default = 1e-6</param>
+        public double FindRoot(string function, double xl, double xu, int maxIte = 100, double tolerance = 1e-6)
         {
-            double fxl, fxu, xr = 0, fxr, error = 1, temp, test, iu = 0, il = 0;
+            double fxl, fxu, xr = 0, fxr = 0, error = 1, temp, test, iu = 0, il = 0;
             fxl = mathParser.Eval_function(function, xl);
             fxu = mathParser.Eval_function(function, xu);
             for (int i = 0; i < maxIte; i++)
@@ -57,7 +57,9 @@ namespace NumericalMethods.RootFinding
                 if (error < tolerance) { break; }
                 if (xr == temp) { break; }
             }
-            lastResult = xr;
+            lastResult[0] = xr;
+            lastResult[1] = fxr;
+            lastResult[2] = error;
             return xr;
         }
         /// <summary>
@@ -67,13 +69,13 @@ namespace NumericalMethods.RootFinding
         /// <param name="xl">This is the lower bound of the root</param>
         /// <param name="xu">This is the upper bound of the root</param>
         /// <param name="maxIte">Maximum number of iterations, default = 100</param>
-        /// <param name="tolerance">This is the tolerance you want to use, default = 0.01 (1%)</param>
+        /// <param name="tolerance">This is the tolerance you want to use, default = 1e-6</param>
         /// <param name="log">This is the list that will contain all the iterations info</param>
-        public double FindRoot(string function, double xl, double xu, out List<string> log, int maxIte = 100, double tolerance = 0.001)
+        public double FindRoot(string function, double xl, double xu, out List<string> log, int maxIte = 100, double tolerance = 1e-6)
         {
             log = new List<string>();
             log.Add("Iteration,xl,xu,xr,f(xr),error");
-            double fxl, fxu, xr = 0, fxr, error = 1, temp, test, iu = 0, il = 0;
+            double fxl, fxu, xr = 0, fxr = 0, error = 1, temp, test, iu = 0, il = 0;
             fxl = mathParser.Eval_function(function, xl);
             fxu = mathParser.Eval_function(function, xu);
             for (int i = 0; i < maxIte; i++)
@@ -105,7 +107,9 @@ namespace NumericalMethods.RootFinding
                 if (error < tolerance) { log.Add(string.Format("Root found in the iteration #{0} with {1}% of tolerance", i + 1, tolerance * 100)); break; }
                 if (xr == temp) { log.Add("Infinite loop"); break; }
             }
-            lastResult = xr;
+            lastResult[0] = xr;
+            lastResult[1] = fxr;
+            lastResult[2] = error;
             return xr;
         }
     }

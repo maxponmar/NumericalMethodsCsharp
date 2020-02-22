@@ -11,11 +11,11 @@ namespace NumericalMethods.RootFinding
     /// </summary>
     public class Newthon_Raphson
     {
-        private double lastResult;
+        private double[] lastResult = new double[3];
         /// <summary>
-        /// This value save the last result
+        /// This value save the last result [0] x, [1] fx, [2] error
         /// </summary>
-        public double LastResult { get => lastResult; }
+        public double[] LastResult { get => lastResult; }
 
         private MathParser mathParser = new MathParser();
         /// <summary>
@@ -27,10 +27,10 @@ namespace NumericalMethods.RootFinding
         /// <param name="fx_derivative">The derivative of fx if you know it, default = "" (disabled)</param>
         /// <param name="h">This value is used to calculate numerical derivative if you don't want to use it instead of symbolic derivative, default = 0.001. The algorith uses a centered finite-divided difference formula with O(h^4) of error (high-accurate)</param>
         /// <param name="maxIte">Maximum number of iterations, default = 100</param>
-        /// <param name="tolerance">This is the tolerance you want to use, default = 0.01 (1%)</param>
-        public double FindRoot(string fx_function, double x0, string fx_derivative = "", double h = 0.001, int maxIte = 100, double tolerance = 0.01)
+        /// <param name="tolerance">This is the tolerance you want to use, default = 1e-6</param>
+        public double FindRoot(string fx_function, double x0, string fx_derivative = "", double h = 0.001, int maxIte = 100, double tolerance = 1e-6)
         {
-            double error = 1, temp, xr = x0, fxr, fdxr;
+            double error = 1, temp, xr = x0, fxr = 0, fdxr;
             if (fx_derivative != "")
             {
                 // When the user introduced a symbolic derivative
@@ -73,7 +73,9 @@ namespace NumericalMethods.RootFinding
                     if (xr == temp) { break; }
                 }
             }
-            lastResult = xr;
+            lastResult[0] = xr;
+            lastResult[1] = fxr;
+            lastResult[2] = error;
             return xr;
         }
         /// <summary>
@@ -85,11 +87,11 @@ namespace NumericalMethods.RootFinding
         /// <param name="fx_derivative">The derivative of fx if you know it, default = "" (disabled)</param>
         /// <param name="h">This value is used to calculate numerical derivative if you don't want to use it instead of symbolic derivative, default = 0.001. The algorith uses a centered finite-divided difference formula with O(h^4) of error. (high-accurate)</param>        
         /// <param name="maxIte">Maximum number of iterations, default = 100</param>
-        /// <param name="tolerance">This is the tolerance you want to use, default = 0.01 (1%)</param>
+        /// <param name="tolerance">This is the tolerance you want to use, default = 1e-6</param>
         /// <param name="log">This is the list that will contain all the iterations info</param>
-        public double FindRoot(string fx_function, double x0, out List<string> log, string fx_derivative = "", double h = 0.001, int maxIte = 100, double tolerance = 0.01)
+        public double FindRoot(string fx_function, double x0, out List<string> log, string fx_derivative = "", double h = 0.001, int maxIte = 100, double tolerance = 1e-6)
         {
-            double error = 1, temp, xr = x0, fxr, fdxr;
+            double error = 1, temp, xr = x0, fxr = 0, fdxr;
             log = new List<string>();
             log.Add("Iteration,xr,f(xr),df(xr),error");
             if (fx_derivative != "")
@@ -137,7 +139,9 @@ namespace NumericalMethods.RootFinding
                     if (xr == temp) { log.Add("Infinite loop"); break; }
                 }
             }
-            lastResult = xr;
+            lastResult[0] = xr;
+            lastResult[1] = fxr;
+            lastResult[2] = error;
             return xr;
         }
     }

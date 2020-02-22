@@ -11,11 +11,11 @@ namespace NumericalMethods.RootFinding
     /// </summary>
     public class Brent
     {
-        private double lastResult;
+        private double[] lastResult = new double[3];
         /// <summary>
-        /// This value save the last result
+        /// This value save the last result  [0] x, [1] fx, [2] error
         /// </summary>
-        public double LastResult { get => lastResult; }
+        public double[] LastResult { get => lastResult; }
 
         private MathParser mathParser = new MathParser();
 
@@ -48,7 +48,9 @@ namespace NumericalMethods.RootFinding
 
             if (fa * fb > 0.0)
             {
-                lastResult = -1;
+                lastResult[0] = -1;                
+                lastResult[1] = 0;
+                lastResult[2] = errorEstimate;
                 return -1;
                 //MessageBox.Show("Lo límites no son adecuados, asegurate de en encierran a la raíz", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -64,7 +66,7 @@ namespace NumericalMethods.RootFinding
 
             i++;
             tol = 2.0 * t * Math.Abs(b) + t;
-            errorEstimate = m = 0.5 * (c - b);            
+            errorEstimate = m = 0.5 * (c - b);                        
             if (Math.Abs(m) > tol && fb != 0.0) // exact comparison with 0 is OK here
             {
                 // See if bisection is forced
@@ -106,7 +108,9 @@ namespace NumericalMethods.RootFinding
                     b -= tol;
                 if (i == maxIte)
                 {
-                    lastResult = b;
+                    lastResult[0] = b;
+                    lastResult[1] = fb;
+                    lastResult[2] = errorEstimate;
                     return b;
                 }
                     
@@ -121,7 +125,9 @@ namespace NumericalMethods.RootFinding
             }
             else
             {
-                lastResult = b;
+                lastResult[0] = b;
+                lastResult[1] = fb;
+                lastResult[2] = errorEstimate;
                 return b;
             }
                 
@@ -158,7 +164,9 @@ namespace NumericalMethods.RootFinding
 
             if (fa * fb > 0.0)
             {
-                lastResult = -1;
+                lastResult[0] = -1;
+                lastResult[1] = 0;
+                lastResult[2] = errorEstimate;
                 return -1;
                 //MessageBox.Show("Lo límites no son adecuados, asegurate de en encierran a la raíz", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -217,7 +225,9 @@ namespace NumericalMethods.RootFinding
                     b -= tol;
                 if (i == maxIte)
                 {
-                    lastResult = b;
+                    lastResult[0] = b;
+                    lastResult[1] = fb;
+                    lastResult[2] = errorEstimate;
                     return b;
                 }                    
 
@@ -231,7 +241,9 @@ namespace NumericalMethods.RootFinding
             }
             else
             {
-                lastResult = b;
+                lastResult[0] = b;
+                lastResult[1] = fb;
+                lastResult[2] = errorEstimate;
                 return b;
             }
         }

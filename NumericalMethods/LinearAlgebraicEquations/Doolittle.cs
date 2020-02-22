@@ -13,7 +13,7 @@ namespace NumericalMethods.LinearAlgebraicEquations
         /// <param name="b">Constant terms matrix</param>
         /// <param name="x">Variable terms matrix</param>
         /// <param name="tolerance">This is the tolerance you want to use, default = 0.001 (0.1%)</param>
-        public void LUDoolittle(double[,] a, double[] b, out double[] x, double tolerance = 0.001)
+        public void Solve(double[,] a, double[] b, out double[] x, double tolerance = 0.001)
         {
             x = new double[b.Length];
             int n = b.Length-1;
@@ -22,7 +22,7 @@ namespace NumericalMethods.LinearAlgebraicEquations
             int er = 0;
             Decompose(a, n, tolerance, o, s, er);
             if (er != -1)
-                SubstituteLU(a, o, n, b, x);
+                SubstituteLU(a, o, n, b,out x, x);
         }
 
         private void Decompose(double[,] a, int n, double tol, double[] o, double[] s, int er)
@@ -85,8 +85,9 @@ namespace NumericalMethods.LinearAlgebraicEquations
             o[k] = dummy;
         }
 
-        private void SubstituteLU(double[,] a, double[] o, int n, double[] b, double[] x)
+        private void SubstituteLU(double[,] a, double[] o, int n, double[] b,out double[] x, double[] xc)
         {
+            x = (double[])xc.Clone();
             double sum;
             for (int i = 1; i <= n; i++)
             {

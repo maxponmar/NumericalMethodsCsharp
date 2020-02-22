@@ -9,11 +9,11 @@ namespace NumericalMethods.RootFinding
     /// </summary>
     public class Fixed_Point
     {
-        private double lastResult;
+        private double[] lastResult = new double[3];
         /// <summary>
-        /// This value save the last result
+        /// This value save the last result [0] x, [1] fx, [2] error
         /// </summary>
-        public double LastResult { get => lastResult; }
+        public double[] LastResult { get => lastResult; }
 
         MathParser mathParser = new MathParser();
         /// <summary>
@@ -25,10 +25,10 @@ namespace NumericalMethods.RootFinding
         /// <param name="gx_function">This is the g(x) function that helps to find the root</param>
         /// <param name="x0">This is the initial value to start the algorithm</param>        
         /// <param name="maxIte">Maximum number of iterations, default = 100</param>
-        /// <param name="tolerance">This is the tolerance you want to use, default = 0.01 (1%)</param>
-        public double FindRoot(string fx_function, string gx_function, double x0, int maxIte = 100, double tolerance = 0.01)
+        /// <param name="tolerance">This is the tolerance you want to use, default = 1e-6</param>
+        public double FindRoot(string fx_function, string gx_function, double x0, int maxIte = 100, double tolerance = 1e-6)
         {
-            double error = 1, temp, xr = x0, fxr;
+            double error = 1, temp, xr = x0, fxr = 0;
             for (int i = 0; i < maxIte; i++)
             {
                 temp = xr;
@@ -40,7 +40,9 @@ namespace NumericalMethods.RootFinding
                 if (error < tolerance) { break; }
                 if (xr == temp) { break; }
             }
-            lastResult = xr;
+            lastResult[0] = xr;
+            lastResult[1] = fxr;
+            lastResult[2] = error;
             return xr;
         }
         /// <summary>
@@ -52,13 +54,13 @@ namespace NumericalMethods.RootFinding
         /// <param name="gx_function">This is the g(x) function that helps to find the root</param>
         /// <param name="x0">This is the initial value to start the algorithm</param>        
         /// <param name="maxIte">Maximum number of iterations, default = 100</param>
-        /// <param name="tolerance">This is the tolerance you want to use, default = 0.01 (1%)</param>
+        /// <param name="tolerance">This is the tolerance you want to use, default = 1e-6</param>
         /// <param name="log">This is the list that will contain all the iterations info</param>
-        public double FindRoot(string fx_function, string gx_function, double x0, out List<string> log, int maxIte = 100, double tolerance = 0.01)
+        public double FindRoot(string fx_function, string gx_function, double x0, out List<string> log, int maxIte = 100, double tolerance = 1e-6)
         {
             log = new List<string>();
             log.Add("Iteration,xr,f(xr),g(xr),error");
-            double error = 1, temp, xr = x0, fxr;
+            double error = 1, temp, xr = x0, fxr = 0;
             for (int i = 0; i < maxIte; i++)
             {
                 temp = xr;
@@ -71,7 +73,9 @@ namespace NumericalMethods.RootFinding
                 if (error < tolerance) { log.Add(string.Format("Root found in the iteration #{0} with {1}% of tolerance", i + 1, tolerance * 100)); break; }
                 if (xr == temp) { log.Add("Infinite loop"); break; }
             }
-            lastResult = xr;
+            lastResult[0] = xr;
+            lastResult[1] = fxr;
+            lastResult[2] = error;
             return xr;
         }
     }

@@ -47,7 +47,7 @@ namespace NumericalMethods.CurveFitting.Least_Square_Regression
                 // solve it
                 double[] coeff;
                 LinearAlgebraicEquations.GaussElimination ge = new LinearAlgebraicEquations.GaussElimination();
-                ge.SolveSLE(a, b, out coeff);
+                ge.Solve(a, b, out coeff);
 
                 a0 = coeff[0];
                 a1 = coeff[1];

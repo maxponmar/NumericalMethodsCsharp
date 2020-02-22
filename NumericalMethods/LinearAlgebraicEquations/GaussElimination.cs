@@ -11,7 +11,7 @@ namespace NumericalMethods.LinearAlgebraicEquations
         /// <param name="b">Constant terms matrix</param>
         /// <param name="x">Variable terms matrix</param>
         /// <param name="tolerance">This is the tolerance you want to use, default = 0.001 (0.1%)</param>
-        public void SolveSLE(double[,]a, double[] b, out double[] x, double tolerance = 0.001)
+        public void Solve(double[,]a, double[] b, out double[] x, double tolerance = 0.001)
         {
             x = new double[b.Length];
             GaussElimination_Algorithm(a, b, x, tolerance);

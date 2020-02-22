@@ -10,11 +10,11 @@ namespace NumericalMethods.RootFinding
     /// </summary>
     public class Muller
     {
-        private double lastResult;
+        private double[] lastResult = new double[3];
         /// <summary>
-        /// This value save the last result
+        /// This value save the last result [0] x, [1] fx, [2] error
         /// </summary>
-        public double LastResult { get => lastResult; }
+        public double[] LastResult { get => lastResult; }
 
         private MathParser mathParser = new MathParser();
 
@@ -27,7 +27,7 @@ namespace NumericalMethods.RootFinding
         /// <param name="maxIte">Maximum number of iterations, default = 10</param>     
         public double FindRoot(string fx, double xr, double h = 0.001, int maxIte = 10)
         {
-            double x0, x1, x2, h0, h1, d0, d1, a, b, c, rad, den, dxr, fx1, fx0, fx2, fxr;
+            double x0, x1, x2, h0, h1, d0, d1, a, b, c, rad, den, dxr = 0, fx1, fx0, fx2, fxr = 0;
             x2 = xr;
             x1 = xr + h * xr;
             x0 = xr + h * xr;
@@ -64,12 +64,15 @@ namespace NumericalMethods.RootFinding
                 //fxr = convEqn.Parse(fx);
                 fxr = mathParser.Eval_function(fx, xr);               
                 if (fxr == 0) { break; }
+                if (fxr <= 1e-13 && fxr >= -1e-13) { break; }
                 if (Math.Abs(dxr) < double.Epsilon * xr) { break; }
                 x0 = x1;
                 x1 = x2;
                 x2 = xr;
             }
-            lastResult = xr;
+            lastResult[0] = xr;
+            lastResult[1] = fxr;
+            lastResult[2] = dxr;
             return xr;
         }
         /// <summary>
@@ -84,7 +87,7 @@ namespace NumericalMethods.RootFinding
         {
             log = new List<string>();
             log.Add("Iteration,xr,f(xr)");
-            double x0, x1, x2, h0, h1, d0, d1, a, b, c, rad, den, dxr, fx1, fx0, fx2, fxr;
+            double x0, x1, x2, h0, h1, d0, d1, a, b, c, rad, den, dxr = 0, fx1, fx0, fx2, fxr = 0;
             x2 = xr;
             x1 = xr + h * xr;
             x0 = xr + h * xr;
@@ -126,6 +129,11 @@ namespace NumericalMethods.RootFinding
                     log.Add("Exact root found in the last iteration");
                     break;
                 }
+                if (fxr <= 1e-13 && fxr >= -1e-13) 
+                {
+                    log.Add("fxr <= 1e-13 and fxr >= -1e-13");
+                    break; 
+                }
                 if (Math.Abs(dxr) < double.Epsilon * xr)
                 {
                     log.Add(string.Format("The rule |dxr| < epsilon*xr was true"));
@@ -135,6 +143,9 @@ namespace NumericalMethods.RootFinding
                 x1 = x2;
                 x2 = xr;
             }
+            lastResult[0] = xr;
+            lastResult[1] = fxr;
+            lastResult[2] = dxr;
             return xr;
         }
     }
