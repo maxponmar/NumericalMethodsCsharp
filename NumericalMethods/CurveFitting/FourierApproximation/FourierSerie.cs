@@ -36,14 +36,61 @@ namespace NumericalMethods.CurveFitting.FourierApproximation
         /// <returns></returns>
         public double Eval(double t)
         {
-            return 0.0;
-        }
-        public override string ToString()
-        {
-            string serie = a0.ToString() + " +";
+            double result = a0;
             for (int i = 0; i < n; i++)
             {
-                serie += string.Format(" ({0}*cos({1}*{2}*x)) + ({3}*sin({1}*{2}*x)) + ", Convert.ToDecimal(an[i]), Convert.ToDecimal(wn), i+1, Convert.ToDecimal(bn[i]));
+                result += (an[i] * Math.Cos(wn * (i + 1) * t) + bn[i] * Math.Sin(wn * (i + 1) * t));
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Note that this method round number to 4 digits, if some value is 0.000000001 for example it will be 0 and it won't be printed
+        /// But to make calculations those numbers will be considered
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            double anr = 0, bnr = 0, wr = 0;           
+            string serie = Math.Round(a0,3) + " ";
+            for (int i = 0; i < n; i++)
+            {
+                anr = Math.Round(an[i], 4);
+                bnr = Math.Round(bn[i], 4);
+                wr = Math.Round(wn * (i + 1), 4);                
+                // an's                
+                if (anr < 0)
+                {
+                    if (anr == -1)
+                        serie += string.Format("- cos({0}x) ", wr); 
+                    else
+                        serie += string.Format("- {0}cos({1}x) ", Math.Abs(anr), wr);
+                }                    
+                if (anr > 0)
+                {
+                    if (anr == 1)
+                        serie += string.Format("+ cos({0}x) ", wr);                    
+                    else
+                        serie += string.Format("+ {0}cos({1}x) ", anr, wr);
+                }
+
+                // bn's
+                if (bnr < 0)
+                {
+                    if (bnr == -1)
+                        serie += string.Format("- sin({0}x) ", wr);
+                    else
+                        serie += string.Format("- {0}sinX({1}x) ", Math.Abs(bnr), wr);
+                }
+                if (bnr > 0)
+                {
+                    if (bnr == 1)
+                        serie += string.Format("+ sin({0}x) ", wr);                    
+                    else
+                        serie += string.Format("+ {0}sin({1}x) ", bnr, wr);
+                }
+
+                //serie += string.Format(" ({0}*cos({1}*{2}x)) + ({3}*sin({1}*{2}x)) + ", Math.Round(an[i],3), Math.Round(wn,3), i+1, Math.Round(bn[i],3));
             }
             return serie;
         }

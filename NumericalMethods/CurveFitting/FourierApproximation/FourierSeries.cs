@@ -6,11 +6,11 @@ namespace NumericalMethods.CurveFitting.FourierApproximation
 {
     public class FourierSeries
     {
-        private FourierSerie lastResult;
+        private FourierSerie fourierserie;
         /// <summary>
         /// This value save the last result
         /// </summary>
-        public FourierSerie LastResult { get => lastResult; }
+        public FourierSerie FourierSerie { get => fourierserie; }
 
         /// <summary>
         /// This method calculates the Fourier serie given a dataset
@@ -53,13 +53,13 @@ namespace NumericalMethods.CurveFitting.FourierApproximation
                     zxcos = 0; zxsen = 0;
                 }
                 result.A0 = a0 / 2;
-                lastResult = (FourierSerie)result.Clone();
+                fourierserie = (FourierSerie)result.Clone();
                 return result;
             }
             else
             {
                 Console.WriteLine("The dataset is not compatible -> x.Length and y.Length must be the same and greater than 1");
-                lastResult = (FourierSerie)result.Clone();
+                fourierserie = (FourierSerie)result.Clone();
                 return result;
             }
         }

@@ -40,7 +40,10 @@ namespace _01_PruebasNumericalMethods
 
             NumericalMethods.CurveFitting.FourierApproximation.FourierSeries fft = new NumericalMethods.CurveFitting.FourierApproximation.FourierSeries();
             fft.Fit(testX, testY, n:3);
-            Console.WriteLine(fft.LastResult.ToString());
+            Console.WriteLine(fft.FourierSerie.ToString());
+
+            Console.WriteLine(" Eval at 2");
+            Console.WriteLine(fft.FourierSerie.Eval(2));
         }       
     }
 }
