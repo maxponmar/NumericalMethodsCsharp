@@ -16,16 +16,16 @@ namespace NumericalMethods.LinearAlgebraicEquations
         public void Solve(double[,] a, double[] b, out double[] x, double tolerance = 0.001)
         {
             x = new double[b.Length];
-            int n = b.Length-1;
+            int n = b.Length-1;            
             double[] o = new double[n + 1];
             double[] s = new double[n + 1];
             int er = 0;
-            Decompose(a, n, tolerance, o, s, er);
+            Decompose(a, n, tolerance, ref o, ref s, ref er);
             if (er != -1)
-                SubstituteLU(a, o, n, b,out x, x);
+                SubstituteLU(a, ref o, n, b, ref x);
         }
 
-        private void Decompose(double[,] a, int n, double tol, double[] o, double[] s, int er)
+        private void Decompose(double[,] a, int n, double tol, ref double[] o,ref double[] s, ref int er)
         {
             double factor;
             for (int i = 0; i <= n; i++)
@@ -41,11 +41,12 @@ namespace NumericalMethods.LinearAlgebraicEquations
 
             for (int k = 0; k <= n - 1; k++)
             {
-                PivotLU(a, o, s, n, k);
+                PivotLU(a, ref o, ref s, n, k);              
                 if (Math.Abs(a[Convert.ToInt32(o[k]), k] / s[Convert.ToInt32(o[k])]) < tol)
                 {
                     er = -1;
                     //txtResultado.AppendText(Convert.ToString(a[Convert.ToInt32(o[k]), k] / s[Convert.ToInt32(o[k])]));
+                    Console.WriteLine(a[Convert.ToInt32(o[k]), k] / s[Convert.ToInt32(o[k])]);
                     break;
                 }
                 for (int i = k + 1; i <= n; i++)
@@ -56,18 +57,19 @@ namespace NumericalMethods.LinearAlgebraicEquations
                     {
                         a[Convert.ToInt32(o[i]), j] -= factor * a[Convert.ToInt32(o[k]), j];
                     }
-                }
+                }                
                 if (Math.Abs(a[Convert.ToInt32(o[k]), k] / s[Convert.ToInt32(o[k])]) < tol)
                 {
                     er = -1;
                     //txtResultado.AppendText(Convert.ToString(a[Convert.ToInt32(o[k]), k] / s[Convert.ToInt32(o[k])]));
+                    Console.WriteLine(a[Convert.ToInt32(o[k]), k] / s[Convert.ToInt32(o[k])]);
                     break;
                 }
             }
         }
 
-        private void PivotLU(double[,] a, double[] o, double[] s, int n, int k)
-        {
+        private void PivotLU(double[,] a, ref double[] o, ref double[] s, int n, int k)
+        {            
             int p = k;
             double big = Math.Abs(a[Convert.ToInt32(o[k]), k] / s[Convert.ToInt32(o[k])]), dummy;
 
@@ -85,9 +87,8 @@ namespace NumericalMethods.LinearAlgebraicEquations
             o[k] = dummy;
         }
 
-        private void SubstituteLU(double[,] a, double[] o, int n, double[] b,out double[] x, double[] xc)
-        {
-            x = (double[])xc.Clone();
+        private void SubstituteLU(double[,] a, ref double[] o, int n, double[] b, ref double[] x)
+        {            
             double sum;
             for (int i = 1; i <= n; i++)
             {

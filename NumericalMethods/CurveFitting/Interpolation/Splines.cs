@@ -286,23 +286,30 @@ namespace NumericalMethods.CurveFitting.Interpolation
             }
         }
 
-        //public static void Get3dSplines(double[] r, double[,] xy, ListBox lbxResultado)
-        //{
-        //    string spline = "";
-        //    int contador = 0, indice = 0;
-        //    for (int i = 0; i <= r.GetUpperBound(0); i++)
-        //    {
-        //        if (contador == 4) { contador = 0; indice++; }
-        //        if (contador == 0) { spline += string.Format("{0}x^3 + ", r[i]); }
-        //        if (contador == 1) { spline += string.Format("({0})x^2 + ", r[i]); }
-        //        if (contador == 2) { spline += string.Format("({0})x + ", r[i]); }
-        //        if (contador == 3)
-        //        {
-        //            spline += string.Format("({0}) , xϵ[{1},{2}]", r[i], xy[0, indice], xy[0, indice + 1]);
-        //            lbxResultado.Items.Add(spline); spline = "";
-        //        }
-        //        contador++;
-        //    }
-        //}
+        public override string ToString()
+        {
+            string splines = "";
+
+            foreach (KeyValuePair<double[], Polynomial> spl in _Splines)
+            {
+                splines += string.Format(spl.Value + $" x€[{spl.Key[0]},{spl.Key[1]}]\n");
+            }
+            return splines;
+        }
+
+        public double Eval(double x)
+        {
+            double result = 0;
+            int count = 0;
+            foreach (KeyValuePair<double[], Polynomial> spl in _Splines)
+            {
+                if (x >= spl.Key[0] && x <= spl.Key[1] || (count == 0 && x <= spl.Key[0]) || (count == _Splines.Count && x >= spl.Key[0])) 
+                {
+                    result = spl.Value.Eval(x);
+                }
+                count++;
+            }
+            return result;
+        }
     }
 }

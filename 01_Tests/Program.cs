@@ -7,6 +7,7 @@ using System.Linq;
 using NumericalMethods;
 using NumericalMethods.RootFinding;
 using NumericalMethods.LinearAlgebraicEquations;
+using NumericalMethods.Optimization;
 using NumericalMethods.CurveFitting.Least_Square_Regression;
 using NumericalMethods.CurveFitting.Interpolation;
 using NumericalMethods.CurveFitting.FourierApproximation;
@@ -82,7 +83,7 @@ namespace _01_PruebasNumericalMethods
 
             // Brent
             Console.WriteLine("   -> Brent");
-            Brent brent = new Brent();
+            NumericalMethods.RootFinding.Brent brent = new NumericalMethods.RootFinding.Brent();
             brent.FindRoot(fx, 1, 2);
             Console.WriteLine("      x = " + brent.LastResult[0]);
             Console.WriteLine("      f(x) = " + brent.LastResult[1]);
@@ -149,6 +150,103 @@ namespace _01_PruebasNumericalMethods
 
             #endregion
 
+            #region Optimization
+
+            Console.WriteLine("\n===== Optimization =====");
+
+            // Test function
+            string fun = "e^((x-0.7)^2)";
+
+            Console.WriteLine();
+            Console.WriteLine("Testing function: " + fun);
+            Console.WriteLine();
+
+            // Brent
+            Console.WriteLine("   -> Brent");
+            NumericalMethods.Optimization.Brent br = new NumericalMethods.Optimization.Brent();
+            br.Solve(fun, 0, 2);
+            Console.WriteLine("      x = " + br.LastResult[0]);
+            Console.WriteLine("      f(x) = " + br.LastResult[1]);            
+            Console.WriteLine();
+
+            // Golden section
+            Console.WriteLine("   -> Golden section");
+            Console.WriteLine("   -> **DOESN'T WORK**");
+            GoldenSection gs = new GoldenSection();
+            gs.Solve(fun, 0, 2);
+            Console.WriteLine("      x = " + gs.LastResult[0]);
+            Console.WriteLine("      f(x) = " + gs.LastResult[1]);
+            Console.WriteLine();
+
+            #endregion
+
+            #region Curve fitting
+
+            Console.WriteLine("\n===== Curve fitting =====");
+
+            // Test data
+            double[] testX = new double[] { 1, 2, 3, 4 };
+            double[] testY = new double[] { 1, 3, 2, 5 };
+
+            Console.WriteLine();
+            Console.WriteLine("Testing dataset: ");
+            Console.WriteLine(string.Format($"X: {testX[0]}-{testX[1]}-{testX[2]}-{testX[3]}"));
+            Console.WriteLine(string.Format($"Y: {testY[0]}-{testY[1]}-{testY[2]}-{testY[3]}"));
+            Console.WriteLine();
+
+            // Linear regression
+            Console.WriteLine("   -> Linear regression");
+            LinearRegression lr = new LinearRegression();
+            lr.Fit(testX, testY);
+            Console.WriteLine("      " + lr.LastResult);            
+            Console.WriteLine();
+
+            // Polynomial regression
+            Console.WriteLine("   -> Polynomial regression");
+            PolynomialRegression pr = new PolynomialRegression();
+            pr.Fit(testX, testY);
+            Console.WriteLine("      " + pr.LastResult);
+            Console.WriteLine();
+
+            // Newton Divided Difference
+            Console.WriteLine("   -> Newton Divided Difference");
+            NewtonsDividedDifference ndd = new NewtonsDividedDifference();
+            ndd.Fit(testX, testY);
+            Console.WriteLine("      " + ndd.LastResult);
+            Console.WriteLine();
+
+            // Lagrange
+            Console.WriteLine("   -> Lagrange");
+            Lagrange lagrange = new Lagrange();
+            lagrange.Fit(testX, testY);
+            Console.WriteLine("      " + lagrange.LastResult);
+            Console.WriteLine();
+
+            // Splines
+            SplinesInterpolation splines = new SplinesInterpolation();
+            Console.WriteLine("   -> Splines: 1st degree");            
+            splines.Fit(testX, testY, 1);
+            Console.WriteLine(splines);
+            Console.WriteLine();
+
+            Console.WriteLine("   -> Splines: 2nd degree");
+            splines.Fit(testX, testY, 2);
+            Console.WriteLine(splines);
+            Console.WriteLine();
+
+            Console.WriteLine("   -> Splines: 3th degree");
+            splines.Fit(testX, testY, 3);
+            Console.WriteLine(splines);
+            //Console.WriteLine("->" + splines.Eval(2.5));
+            Console.WriteLine();
+
+            // Fourier Serie
+            Console.WriteLine("   -> Fourier Series");
+            FourierSeries fft = new FourierSeries();
+            fft.Fit(testX, testY, n: 3);
+            Console.WriteLine(fft.FourierSerie.ToString());
+
+            #endregion
 
 
             // REMAINDER
@@ -156,26 +254,20 @@ namespace _01_PruebasNumericalMethods
             // OPTIMIZE POLYNOMIAL TOSTRING METHOD
 
 
-            Console.WriteLine("Testing NDD");
-            LinearRegression lr = new LinearRegression();
-            PolynomialRegression pr = new PolynomialRegression();
+            //            Console.WriteLine("Testing NDD");
+            //            LinearRegression lr = new LinearRegression();
+            //            PolynomialRegression pr = new PolynomialRegression();
 
-            NewtonsDividedDifference ndd = new NewtonsDividedDifference();
-            Lagrange lagrange = new Lagrange();
+            //            NewtonsDividedDifference ndd = new NewtonsDividedDifference();
+            //            Lagrange lagrange = new Lagrange();
 
-;           double[] testX = new double[] { 1,2,3,4 };
-            double[] testY = new double[] { 1,5,3,1 };
+            //;           double[] testX = new double[] { 1,2,3,4 };
+            //            double[] testY = new double[] { 1,5,3,1 };
 
             //Polynomial polynomial = lagrange.Fit(testX, testY);
 
             //Console.WriteLine(polynomial);                       
-
-            NumericalMethods.CurveFitting.FourierApproximation.FourierSeries fft = new NumericalMethods.CurveFitting.FourierApproximation.FourierSeries();
-            fft.Fit(testX, testY, n:3);
-            Console.WriteLine(fft.FourierSerie.ToString());
-
-            Console.WriteLine(" Eval at 2");
-            Console.WriteLine(fft.FourierSerie.Eval(2));
+           
         }       
     }
 }

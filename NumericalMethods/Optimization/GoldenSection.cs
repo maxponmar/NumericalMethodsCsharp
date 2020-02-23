@@ -10,11 +10,11 @@ namespace NumericalMethods.Optimization
     /// </summary>
     public class GoldenSection
     {
-        private double lastResult;
+        private double[] lastResult = new double[2];
         /// <summary>
-        /// This value save the last result
+        /// This value save the last result [0] x, [1] fx, [2] error
         /// </summary>
-        public double LastResult { get => lastResult; }
+        public double[] LastResult { get => lastResult; }
 
         private MathParser mathParser = new MathParser();
         private double px, pfx;
@@ -99,14 +99,16 @@ namespace NumericalMethods.Optimization
                         {
                             //txtResultado.AppendText(string.Format("iteracion {0} - f({1}) = {2} \r\n", i + 1, xopt, fxx));
                             px = xopt; pfx = fxx;
-                            lastResult = xopt;
+                            lastResult[0] = xopt;
+                            lastResult[1] = pfx;
                             return xopt;
                             //break;
                         }
                         //txtResultado.AppendText(string.Format("iteracion {0} - f({1}) = {2} \r\n", i + 1, xopt, fxx));
                         px = xopt; pfx = fxx;
                     }
-                    lastResult = xopt;
+                    lastResult[0] = xopt;
+                    lastResult[1] = pfx;
                     return xopt;
                 }
                 if (mode == 0)
@@ -165,22 +167,26 @@ namespace NumericalMethods.Optimization
                         {
                             //txtResultado.AppendText(string.Format("iteracion {0} - f({1}) = {2} \r\n", i + 1, xopt, fxx));
                             px = xopt; pfx = fxx;
-                            lastResult = xopt;
+                            lastResult[0] = xopt;
+                            lastResult[1] = pfx;
                             return xopt;
                         }
                         //txtResultado.AppendText(string.Format("iteracion {0} - f({1}) = {2} \r\n", i + 1, xopt, fxx));
                         px = xopt; pfx = fxx;
                     }
-                    lastResult = xopt;
+                    lastResult[0] = xopt;
+                    lastResult[1] = pfx;
                     return xopt;
                 }
             }
             else
             {
-                lastResult = -1;
+                lastResult[0] = -1;
+                lastResult[1] = 0;                
                 return -1;
             }
-            lastResult = xopt;
+            lastResult[0] = xopt;
+            lastResult[1] = pfx;
             return xopt;           
         }
 
@@ -269,14 +275,16 @@ namespace NumericalMethods.Optimization
                         {
                             //txtResultado.AppendText(string.Format("iteracion {0} - f({1}) = {2} \r\n", i + 1, xopt, fxx));
                             px = xopt; pfx = fxx;
-                            lastResult = xopt;
+                            lastResult[0] = xopt;
+                            lastResult[1] = pfx;
                             return xopt;
                             //break;
                         }
                         //txtResultado.AppendText(string.Format("iteracion {0} - f({1}) = {2} \r\n", i + 1, xopt, fxx));
                         px = xopt; pfx = fxx;
                     }
-                    lastResult = xopt;
+                    lastResult[0] = xopt;
+                    lastResult[1] = pfx;
                     return xopt;
                 }
                 if (mode == 0)
@@ -336,22 +344,26 @@ namespace NumericalMethods.Optimization
                         {
                             //txtResultado.AppendText(string.Format("iteracion {0} - f({1}) = {2} \r\n", i + 1, xopt, fxx));
                             px = xopt; pfx = fxx;
-                            lastResult = xopt;
+                            lastResult[0] = xopt;
+                            lastResult[1] = pfx;
                             return xopt;
                         }
                         //txtResultado.AppendText(string.Format("iteracion {0} - f({1}) = {2} \r\n", i + 1, xopt, fxx));
                         px = xopt; pfx = fxx;
                     }
-                    lastResult = xopt;
+                    lastResult[0] = xopt;
+                    lastResult[1] = pfx;
                     return xopt;
                 }
             }
             else
             {
-                lastResult = -1;
+                lastResult[0] = -1;
+                lastResult[1] = 0;
                 return -1;
             }
-            lastResult = xopt;
+            lastResult[0] = xopt;
+            lastResult[1] = pfx;
             return xopt;
         }
     }
