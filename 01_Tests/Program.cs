@@ -240,14 +240,23 @@ namespace _01_PruebasNumericalMethods
             //Console.WriteLine("->" + splines.Eval(2.5));
             Console.WriteLine();
 
-            // Fourier Serie
-            Console.WriteLine("   -> Fourier Series");
+            // Fourier Series
+            Console.WriteLine("   -> Fourier Series (3 armonics)");
             FourierSeries fft = new FourierSeries();
             fft.Fit(testX, testY, n: 3);
             Console.WriteLine(fft.FourierSerie.ToString());
 
             #endregion
 
+            #region Numerical Differentiation and Integration
+
+            // Numerical Differentiation
+
+
+            // Numerical Integration
+
+
+            #endregion
 
             // REMAINDER
             // WRITE AN EXAMPLE FOR EVERY SINGLE METHOD
@@ -267,7 +276,7 @@ namespace _01_PruebasNumericalMethods
             //Polynomial polynomial = lagrange.Fit(testX, testY);
 
             //Console.WriteLine(polynomial);                       
-           
-        }       
+
+        }
     }
 }
