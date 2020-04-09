@@ -62,9 +62,25 @@ Golden Section method is use to found the  maximun o minimun value of a function
 * Brent:
 The brent's methos combines parabolic interpolation and golden-section to find the minimun value between an interval
 
-## Curve fitting (Working-on)
-* ...
+## Curve fitting (only for 1 input - 1 output)
 
+### Least Square Regression
+* Linear regression:
+This is the simpliest least-squares approximation, this method return a 1st degree polynomial that fits the given data X Y 
+* Polynomial regression:
+This method fits the given data with polynomial regression method, limited to a 2nd degree polynomial (Return a Polynomial object).
+### Interpolation
+* Newton Divided Differences:
+This method fits the given data with Newton´s Divided Differences, return a polynomial object.
+* Lagrange:
+This method fits the given data with Lagrage method, it returns a Polynomial object.
+* Splines:
+This method fits the given data using Splines, you can choose 1st, 2nd or 3th degree. The result will be stored in "Splines" Dictionary (object attribute of the class SplinesInterpolation).
+The values (of the dictionary) are polynomials of 1st, 2nd or 3th degree and the Keys are their respective limits.
+You can print spline object to get an idea of the explanation above.
+### Fourier Approximation
+* This method calculates the Fourier serie given a dataset. The result is saved as a FourierSerie Object.
+The time samples need to be equally separated (e.g. 0.1-0.2-0.3, or 1-2-3)
 ## Extras
 * Polynomial class:
 This class alows you to create, print and make basic operations bewteen polynomials (+,-,*,/).
