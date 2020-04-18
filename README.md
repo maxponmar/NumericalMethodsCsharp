@@ -1,4 +1,4 @@
-# -NumericalMethodsC-
+# -NumericalMethodsCsharp-
 Numerical Methods Library for C# 
 
 This library is based on the book "Numerical Method for Engineers - Steven C. Chapra, Raymond P. Cannale"
