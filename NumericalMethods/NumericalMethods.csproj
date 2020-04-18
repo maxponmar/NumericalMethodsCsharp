@@ -50,6 +50,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MathParser\MathParser.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="MathParser">
       <HintPath>..\MathParser\bin\Debug\netcoreapp3.0\MathParser.dll</HintPath>
     </Reference>
