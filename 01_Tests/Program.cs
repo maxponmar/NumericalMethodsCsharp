@@ -11,6 +11,7 @@ using NumericalMethods.Optimization;
 using NumericalMethods.CurveFitting.Least_Square_Regression;
 using NumericalMethods.CurveFitting.Interpolation;
 using NumericalMethods.CurveFitting.FourierApproximation;
+using NumericalMethods.DifferentiationIntegration;
 
 namespace _01_PruebasNumericalMethods
 {
@@ -66,7 +67,7 @@ namespace _01_PruebasNumericalMethods
             // Fixed point
             Console.WriteLine("   -> Fixed point");
             Fixed_Point fxpt = new Fixed_Point();
-            fxpt.FindRoot(fx, "(1+x)^(1/3)",1);
+            fxpt.FindRoot(fx, "(1+x)^(1/3)", 1);
             Console.WriteLine("      x = " + fxpt.LastResult[0]);
             Console.WriteLine("      f(x) = " + fxpt.LastResult[1]);
             Console.WriteLine("      error = " + fxpt.LastResult[2]);
@@ -75,8 +76,8 @@ namespace _01_PruebasNumericalMethods
             // Secant
             Console.WriteLine("   -> Secant");
             Secant secant = new Secant();
-            secant.FindRoot(fx, 1,2);
-            Console.WriteLine("      x = "+ secant.LastResult[0]);
+            secant.FindRoot(fx, 1, 2);
+            Console.WriteLine("      x = " + secant.LastResult[0]);
             Console.WriteLine("      f(x) = " + secant.LastResult[1]);
             Console.WriteLine("      error = " + secant.LastResult[2]);
             Console.WriteLine();
@@ -123,9 +124,9 @@ namespace _01_PruebasNumericalMethods
 
             Console.WriteLine();
             Console.WriteLine("Testing system: ");
-            for (int i = 0; i < 3; i++)            
+            for (int i = 0; i < 3; i++)
                 Console.WriteLine(string.Format($"{a[i, 0]}x1 + {a[i, 1]}x2 + {a[i, 2]}x3 = {b[i]}"));
-            
+
             double[] x = new double[3];
             Console.WriteLine();
 
@@ -166,7 +167,7 @@ namespace _01_PruebasNumericalMethods
             NumericalMethods.Optimization.Brent br = new NumericalMethods.Optimization.Brent();
             br.Solve(fun, 0, 2);
             Console.WriteLine("      x = " + br.LastResult[0]);
-            Console.WriteLine("      f(x) = " + br.LastResult[1]);            
+            Console.WriteLine("      f(x) = " + br.LastResult[1]);
             Console.WriteLine();
 
             // Golden section
@@ -198,7 +199,7 @@ namespace _01_PruebasNumericalMethods
             Console.WriteLine("   -> Linear regression");
             LinearRegression lr = new LinearRegression();
             lr.Fit(testX, testY);
-            Console.WriteLine("      " + lr.LastResult);            
+            Console.WriteLine("      " + lr.LastResult);
             Console.WriteLine();
 
             // Polynomial regression
@@ -224,7 +225,7 @@ namespace _01_PruebasNumericalMethods
 
             // Splines
             SplinesInterpolation splines = new SplinesInterpolation();
-            Console.WriteLine("   -> Splines: 1st degree");            
+            Console.WriteLine("   -> Splines: 1st degree");
             splines.Fit(testX, testY, 1);
             Console.WriteLine(splines);
             Console.WriteLine();
@@ -245,13 +246,45 @@ namespace _01_PruebasNumericalMethods
             FourierSeries fft = new FourierSeries();
             fft.Fit(testX, testY, n: 3);
             Console.WriteLine(fft.FourierSerie.ToString());
+            Console.WriteLine();
 
             #endregion
 
             #region Numerical Differentiation and Integration
 
             // Numerical Differentiation
+            Console.WriteLine("===== Numerical differenciation =====\n");
+            Console.WriteLine(" Function f(x) = -0.1x^4 - 0.15x^3 - 0.5x^2 - 0.25x + 1.2 when x = 3\n");
 
+            Differentiation diff = new Differentiation();                        
+
+            double res = 0;
+
+            // Testing from 1 to 4th derivative, all 3 methods and both simple and improved versions
+            string[] methods = new string[] { "forward", "backward", "centered" };
+            string[] types = new string[] { "simple", "improved" };
+            for (int grade = 1; grade <= 4; grade++)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 2; j++)
+                    {
+                        //x = diff.derivative("-0.1x^4 - 0.15x^3 - 0.5x^2 - 0.25x + 1.2", 3, h: 0.01, grade, methods[i], types[j]);
+                        //Console.WriteLine("   -> (grade = " + grade + " Derivative (" + methods[i] + " - " + types[j] + ") = " + x + "\n");
+                        try
+                        {
+                            res = diff.derivative("-0.1x^4 - 0.15x^3 - 0.5x^2 - 0.25x + 1.2", 3, h: 0.01, grade, methods[i], types[j]);
+                            Console.WriteLine("   -> (grade = " + grade + " Derivative (" + methods[i] + " - " + types[j] + ") = " + res);
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.Message);
+                            Console.WriteLine("   -> ERROR (grade-method-type): " + grade + " - " + methods[i] + " - " + types[j] + " xxxxxx ");
+                        }
+                    }
+                }
+                Console.WriteLine();
+            }                    
 
             // Numerical Integration
 

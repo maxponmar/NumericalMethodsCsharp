@@ -6,5 +6,6 @@ namespace NumericalMethods.DifferentiationIntegration
 {
     public class Integration
     {
+
     }
 }
