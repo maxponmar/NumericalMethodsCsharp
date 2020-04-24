@@ -284,15 +284,28 @@ namespace _01_PruebasNumericalMethods
                     }
                 }
                 Console.WriteLine();
-            }                    
+            }
 
             // Numerical Integration
+            Console.WriteLine("===== Numerical Integration =====\n");
+            Console.WriteLine(" Function f(x) = 0.2 + 25x - 200x^2 + 675x^3 - 900x^4 + 400x^5 from 0 to 0.8\n");
 
+            Integration integration = new Integration();
+
+            double integrate;
+
+            integrate = integration.integrate("0.2 + 25x - 200x^2 + 675x^3 - 900x^4 + 400x^5", 0, 0.8, method: "trapezoidal");
+            Console.WriteLine("   -> Using trapezoidal method: " + integrate);
+
+            integrate = integration.integrate("0.2 + 25x - 200x^2 + 675x^3 - 900x^4 + 400x^5", 0, 0.8, method: "simpson12");
+            Console.WriteLine("   -> Using simpson12 method: " + integrate);
+
+            integrate = integration.integrate("0.2 + 25x - 200x^2 + 675x^3 - 900x^4 + 400x^5", 0, 0.8, method: "simpson38");
+            Console.WriteLine("   -> Using simpson38 method: " + integrate);
 
             #endregion
 
             // REMAINDER
-            // WRITE AN EXAMPLE FOR EVERY SINGLE METHOD
             // OPTIMIZE POLYNOMIAL TOSTRING METHOD
 
 
