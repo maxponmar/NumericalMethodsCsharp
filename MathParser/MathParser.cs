@@ -157,6 +157,17 @@ namespace ReadFunction
             return Convert.ToDouble(Parse(function));
         }
         /// <summary>
+        /// Evaluate a f(x,y) function        
+        /// </summary>
+        /// <param name="function">A function of x => f(x)</param>
+        /// <param name="x">The x value to evaluate f(x)</param>
+        public double Eval_function_xy(string function, double x, double y)
+        {
+            ProgrammaticallyParse("let x =" + x.ToString());
+            ProgrammaticallyParse("let y =" + y.ToString());
+            return Convert.ToDouble(Parse(function));
+        }
+        /// <summary>
         /// Enter the math expression in form of a string.
         /// </summary>
         /// <param name="mathExpression">The math expression to parse.</param>

@@ -22,7 +22,7 @@ namespace NumericalMethods.DifferentiationIntegration
         /// <param name="h">Step h, 0.001 by default</param>
         /// <param name="method">You can use "trapezoidal", "simpson12", or "simpson38" </param>
         /// <returns></returns>
-        public double integrate(string function, double lower, double upper, double h = 0.001, string method = "trapezoidal")
+        public double Integrate(string function, double lower, double upper, double h = 0.001, string method = "trapezoidal")
         {
             method = method.ToLower();
             switch (method)

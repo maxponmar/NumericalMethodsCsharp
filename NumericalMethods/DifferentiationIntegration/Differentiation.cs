@@ -33,7 +33,7 @@ namespace NumericalMethods.DifferentiationIntegration
         /// <param name="method">"forward" (default), "backward", or "centered"</param>
         /// <param name="type">"simple" or "improved"</param>
         /// <returns></returns>
-        public double derivative(string function, double x, double h = 0.001, int grade = 1, string method = "forward" , string type = "simple")
+        public double Derivative(string function, double x, double h = 0.001, int grade = 1, string method = "forward" , string type = "simple")
         {
             method = method.ToLower();
             type = type.ToLower();

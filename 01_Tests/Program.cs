@@ -12,6 +12,7 @@ using NumericalMethods.CurveFitting.Least_Square_Regression;
 using NumericalMethods.CurveFitting.Interpolation;
 using NumericalMethods.CurveFitting.FourierApproximation;
 using NumericalMethods.DifferentiationIntegration;
+using NumericalMethods.OrdinayDifferentialEquations;
 
 namespace _01_PruebasNumericalMethods
 {
@@ -273,7 +274,7 @@ namespace _01_PruebasNumericalMethods
                         //Console.WriteLine("   -> (grade = " + grade + " Derivative (" + methods[i] + " - " + types[j] + ") = " + x + "\n");
                         try
                         {
-                            res = diff.derivative("-0.1x^4 - 0.15x^3 - 0.5x^2 - 0.25x + 1.2", 3, h: 0.01, grade, methods[i], types[j]);
+                            res = diff.Derivative("-0.1x^4 - 0.15x^3 - 0.5x^2 - 0.25x + 1.2", 3, h: 0.01, grade, methods[i], types[j]);
                             Console.WriteLine("   -> (grade = " + grade + " Derivative (" + methods[i] + " - " + types[j] + ") = " + res);
                         }
                         catch (Exception e)
@@ -294,17 +295,37 @@ namespace _01_PruebasNumericalMethods
 
             double integrate;
 
-            integrate = integration.integrate("0.2 + 25x - 200x^2 + 675x^3 - 900x^4 + 400x^5", 0, 0.8, method: "trapezoidal");
+            integrate = integration.Integrate("0.2 + 25x - 200x^2 + 675x^3 - 900x^4 + 400x^5", 0, 0.8, method: "trapezoidal");
             Console.WriteLine("   -> Using trapezoidal method: " + integrate);
 
-            integrate = integration.integrate("0.2 + 25x - 200x^2 + 675x^3 - 900x^4 + 400x^5", 0, 0.8, method: "simpson12");
+            integrate = integration.Integrate("0.2 + 25x - 200x^2 + 675x^3 - 900x^4 + 400x^5", 0, 0.8, method: "simpson12");
             Console.WriteLine("   -> Using simpson12 method: " + integrate);
 
-            integrate = integration.integrate("0.2 + 25x - 200x^2 + 675x^3 - 900x^4 + 400x^5", 0, 0.8, method: "simpson38");
+            integrate = integration.Integrate("0.2 + 25x - 200x^2 + 675x^3 - 900x^4 + 400x^5", 0, 0.8, method: "simpson38");
             Console.WriteLine("   -> Using simpson38 method: " + integrate);
 
             #endregion
 
+            #region Ordinary Differential Equations
+
+            Console.WriteLine("\n===== Numerical Integration =====\n");
+            Console.WriteLine(" Tets: y' = -2x^3 + 12x^2 - 20x + 8.5, from x=0 to x=4, initial conditions: y(0) = 1\n");
+
+            ODE_Solver odeSolver = new ODE_Solver();
+            
+            double[] result_ode = odeSolver.Solve_Euler("-2x^3 + 12x^2 - 20x + 8.5", 1, 0, 0.5, new double[] { 0, 4 });
+            Console.WriteLine("   -> Using Euler method: ");
+            foreach (double value in result_ode)            
+                Console.WriteLine("      " + value);
+
+            result_ode = odeSolver.Solve_ImprovedEuler("-2x^3 + 12x^2 - 20x + 8.5", 1, 0, 0.5, 5, new double[] { 0, 4 });
+            Console.WriteLine("   -> Using Improved Euler method (5 correctors): ");
+            foreach (double value in result_ode)
+                Console.WriteLine("      " + value);
+
+
+
+            #endregion
             // REMAINDER
             // OPTIMIZE POLYNOMIAL TOSTRING METHOD
 
