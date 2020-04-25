@@ -107,6 +107,6 @@ To used you need to use the specific method and give the function, initial condi
 
 ## Extras
 * Polynomial class:
-This class alows you to create, print and make basic operations bewteen polynomials (+,-,*,/).
+This class allows you to create, print and make basic operations bewteen polynomials (+,-,*,/).
 * CSV-Tools:
-This static class alows you to work with csv files, you can convert a List<string> to a csv file, or creat a List<string> or double[,] array from a csv file.
+This static class allows you to work with csv files, you can convert a List<string> to a csv file, or creat a List<string> or double[,] array from a csv file.
