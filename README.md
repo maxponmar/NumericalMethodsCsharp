@@ -105,7 +105,7 @@ To solve ordinary differential equations ( y'=f(x,y) ) you can chose one of thes
 * Runge-Kutta (Fourth-Order)
 * Butcher (Runge-Kutta Fifth-Order)
 
-To used you need to use the specific method and give the function, initial conditions, the boundaries ( e.g. from x=0 to x=4 ) and the h (step)
+To use these methods you need to use the specific method and give the function, initial conditions, the boundaries ( e.g. from x=0 to x=4 ) and the h (step)
 
 ## Extras
 * Polynomial class:
