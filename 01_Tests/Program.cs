@@ -323,27 +323,19 @@ namespace _01_PruebasNumericalMethods
             foreach (double value in result_ode)
                 Console.WriteLine("      " + value);
 
+            result_ode = odeSolver.Solve_RungeKutta4("-2x^3 + 12x^2 - 20x + 8.5", 1, 0, 0.5, new double[] { 0, 4 });
+            Console.WriteLine("   -> Using Runge-Kutta (Fourth-Order) method: ");
+            foreach (double value in result_ode)
+                Console.WriteLine("      " + value);
+
+            result_ode = odeSolver.Solve_ButcherRK("-2x^3 + 12x^2 - 20x + 8.5", 1, 0, 0.5, new double[] { 0, 4 });
+            Console.WriteLine("   -> Using Butcher's (RK Fifth-Order) method: ");
+            foreach (double value in result_ode)
+                Console.WriteLine("      " + value);
 
 
-            #endregion
-            // REMAINDER
-            // OPTIMIZE POLYNOMIAL TOSTRING METHOD
 
-
-            //            Console.WriteLine("Testing NDD");
-            //            LinearRegression lr = new LinearRegression();
-            //            PolynomialRegression pr = new PolynomialRegression();
-
-            //            NewtonsDividedDifference ndd = new NewtonsDividedDifference();
-            //            Lagrange lagrange = new Lagrange();
-
-            //;           double[] testX = new double[] { 1,2,3,4 };
-            //            double[] testY = new double[] { 1,5,3,1 };
-
-            //Polynomial polynomial = lagrange.Fit(testX, testY);
-
-            //Console.WriteLine(polynomial);                       
-
+            #endregion                 
         }
     }
 }
