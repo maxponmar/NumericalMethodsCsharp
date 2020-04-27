@@ -81,8 +81,32 @@ You can print spline object to get an idea of the explanation above.
 ### Fourier Approximation
 * This method calculates the Fourier serie given a dataset. The result is saved as a FourierSerie Object.
 The time samples need to be equally separated (e.g. 0.1-0.2-0.3, or 1-2-3)
+
+## Numerical Differentiation and Integration
+
+### Differentiation
+With the Derivative method, you can calculate the first, second, thirdh, or fourth derivative using multiple methods:
+* Forward (Simple or improved)
+* Centered (Simple or improved)
+* Backward (Simple or improved)
+Using Taylor's series, you can choose 'simple' or 'improved' that uses more terms of the Taylor's serios so that it will be more accurate but needs to evaluate the function more times.
+
+### Integration
+You can choose the below methods to integrate:
+* Trapezoidal
+* Simpson 1/2
+* Simpson 3/8
+All are simple implementations
+
+## Ordinary Differential Equations
+To solve ordinary differential equations ( y'=f(x,y) ) you can chose one of these methods:
+* Euler
+* Improved Euler
+* Runge-Kutta
+To used you need to use the specific method and give the function, initial conditions, the boundaries ( e.g. from x=0 to x=4 ) and the h (step)
+
 ## Extras
 * Polynomial class:
-This class alows you to create, print and make basic operations bewteen polynomials (+,-,*,/).
+This class allows you to create, print and make basic operations bewteen polynomials (+,-,*,/).
 * CSV-Tools:
-This static class alows you to work with csv files, you can convert a List<string> to a csv file, or creat a List<string> or double[,] array from a csv file.
+This static class allows you to work with csv files, you can convert a List<string> to a csv file, or creat a List<string> or double[,] array from a csv file.
