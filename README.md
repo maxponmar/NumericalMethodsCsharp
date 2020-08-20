@@ -112,3 +112,5 @@ To use these methods you need to use the specific method and give the function, 
 This class allows you to create, print and make basic operations bewteen polynomials (+,-,*,/).
 * CSV-Tools:
 This static class allows you to work with csv files, you can convert a List<string> to a csv file, or creat a List<string> or double[,] array from a csv file.
+
+![alt text](https://github.com/maxponmar/NumericalMethodsCsharp/blob/master/pexels-lumn167682.jpg?raw=true)
