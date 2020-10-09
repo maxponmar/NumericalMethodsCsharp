@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathParser", "MathParser\Ma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01_Tests", "01_Tests\01_Tests.csproj", "{9ED96D51-80D7-4100-9AFC-D95E15643B7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionEvaluatorLibrary", "FunctionEvaluatorLibrary\FunctionEvaluatorLibrary.csproj", "{8B4724E3-1A50-4F1D-833D-6A2BB658C821}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunctionEvaluatorLibrary", "FunctionEvaluatorLibrary\FunctionEvaluatorLibrary.csproj", "{8B4724E3-1A50-4F1D-833D-6A2BB658C821}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionEvaluatorLibrary.Tests", "FunctionEvaluatorLibrary.Tests\FunctionEvaluatorLibrary.Tests.csproj", "{94073C36-B7B1-4D40-888C-C61FECF993DC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8B4724E3-1A50-4F1D-833D-6A2BB658C821} = {8B4724E3-1A50-4F1D-833D-6A2BB658C821}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +38,10 @@ Global
 		{8B4724E3-1A50-4F1D-833D-6A2BB658C821}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B4724E3-1A50-4F1D-833D-6A2BB658C821}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B4724E3-1A50-4F1D-833D-6A2BB658C821}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94073C36-B7B1-4D40-888C-C61FECF993DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94073C36-B7B1-4D40-888C-C61FECF993DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94073C36-B7B1-4D40-888C-C61FECF993DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94073C36-B7B1-4D40-888C-C61FECF993DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
