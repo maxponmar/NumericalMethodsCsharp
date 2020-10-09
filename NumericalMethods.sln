@@ -16,6 +16,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunctionEvaluatorLibrary.Te
 		{8B4724E3-1A50-4F1D-833D-6A2BB658C821} = {8B4724E3-1A50-4F1D-833D-6A2BB658C821}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumericalMethodsLibrary", "NumericalMethodsLibrary\NumericalMethodsLibrary.csproj", "{54DF42CA-8D12-4A24-90B8-8F5BFD6B9B77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumericalMethodsLibrary.Tests", "NumericalMethodsLibrary.Tests\NumericalMethodsLibrary.Tests.csproj", "{51E1AD9E-F92C-4443-990A-8949F8412EBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +46,14 @@ Global
 		{94073C36-B7B1-4D40-888C-C61FECF993DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94073C36-B7B1-4D40-888C-C61FECF993DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94073C36-B7B1-4D40-888C-C61FECF993DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54DF42CA-8D12-4A24-90B8-8F5BFD6B9B77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54DF42CA-8D12-4A24-90B8-8F5BFD6B9B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54DF42CA-8D12-4A24-90B8-8F5BFD6B9B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54DF42CA-8D12-4A24-90B8-8F5BFD6B9B77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51E1AD9E-F92C-4443-990A-8949F8412EBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51E1AD9E-F92C-4443-990A-8949F8412EBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51E1AD9E-F92C-4443-990A-8949F8412EBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51E1AD9E-F92C-4443-990A-8949F8412EBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
