@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace FunctionEvaluatorLibrary.Dictionaries
 {
     static class LocalMathFunctions
     {
-        public static Dictionary<string, Func<double[], double>> getMathFunctions()
-        {
-            return new Dictionary<string, Func<double[], double>>(18)
+        private static Dictionary<string, Func<double[], double>> functions =
+            new Dictionary<string, Func<double[], double>>(18)
             {
                 ["cos"] = inputs => Math.Cos(inputs[0]),
                 ["cosh"] = inputs => Math.Cosh(inputs[0]),
@@ -47,6 +47,20 @@ namespace FunctionEvaluatorLibrary.Dictionaries
 
                 ["ln"] = inputs => Math.Log(inputs[0])
             };
+
+        public static Dictionary<string, Func<double[], double>> getMathFunctions()
+        {
+            return functions;
+        }
+
+        public static bool containsFunction(string functionName)
+        {
+            return functions.Keys.Contains(functionName);
+        }
+
+        public static Func<double[], double> getFunction(string functionName)
+        {
+            return functions[functionName];
         }
     }
 }

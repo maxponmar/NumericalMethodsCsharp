@@ -14,7 +14,7 @@ namespace FunctionEvaluatorLibrary.Function
 
         public override double Evaluate(double xValue)
         {
-            throw new NotImplementedException();
+            return FunctionEvaluator.Evaluate(function, xValue);            
         }
     }
 }

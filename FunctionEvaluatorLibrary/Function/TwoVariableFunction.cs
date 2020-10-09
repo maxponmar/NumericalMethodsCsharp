@@ -13,7 +13,7 @@ namespace FunctionEvaluatorLibrary.Function
         }
         public override double Evaluate(Point point)
         {
-            throw new NotImplementedException();
+            return FunctionEvaluator.Evaluate(function, point.getX(), point.getY());
         }
     }
 }

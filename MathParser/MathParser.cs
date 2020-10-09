@@ -427,9 +427,9 @@ namespace ReadFunction
                 double tmpResult;
 
                 var args = new List<double>();
-                var functionName = tokens[open == 0 ? 0 : open - 1];
+                var ComplexExpressionName = tokens[open == 0 ? 0 : open - 1];
 
-                if (LocalFunctions.Keys.Contains(functionName))
+                if (LocalFunctions.Keys.Contains(ComplexExpressionName))
                 {
                     if (roughExpr.Contains(","))
                     {
@@ -449,12 +449,12 @@ namespace ReadFunction
                         }
 
                         // finally, passing the arguments to the given function
-                        tmpResult = double.Parse(LocalFunctions[functionName](args.ToArray()).ToString(CultureInfo), CultureInfo);
+                        tmpResult = double.Parse(LocalFunctions[ComplexExpressionName](args.ToArray()).ToString(CultureInfo), CultureInfo);
                     }
                     else
                     {
                         // but if we only have one argument, then we pass it directly to the function
-                        tmpResult = double.Parse(LocalFunctions[functionName](new[]
+                        tmpResult = double.Parse(LocalFunctions[ComplexExpressionName](new[]
                         {
                             BasicArithmeticalExpression(roughExpr)
                         }).ToString(CultureInfo), CultureInfo);
@@ -473,7 +473,7 @@ namespace ReadFunction
                 tokens[open] = tmpResult.ToString(CultureInfo);
                 tokens.RemoveRange(open + 1, close - open);
 
-                if (LocalFunctions.Keys.Contains(functionName))
+                if (LocalFunctions.Keys.Contains(ComplexExpressionName))
                 {
                     // if we also executed a function, removing
                     // the function name as well.
