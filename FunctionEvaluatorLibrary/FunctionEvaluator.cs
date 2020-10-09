@@ -8,7 +8,7 @@ using FunctionEvaluatorLibrary.Token;
 
 namespace FunctionEvaluatorLibrary
 {
-    public static class FunctionEvaluator
+    static class FunctionEvaluator
     {
         
         /// <summary>

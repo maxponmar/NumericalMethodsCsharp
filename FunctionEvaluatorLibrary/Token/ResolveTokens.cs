@@ -37,7 +37,7 @@ namespace FunctionEvaluatorLibrary.Token
             {
                 if (LocalVariables.containsVariable(tokensToResolve[i]))
                 {
-                    tokensToResolve[i] = LocalVariables.getVariable(tokensToResolve[i]).ToString(CultureInfo);
+                    tokensToResolve[i] = LocalVariables.getVariable(tokensToResolve[i]).ToString(CultureInfo.InvariantCulture);
                 }
             }
         }
@@ -67,7 +67,9 @@ namespace FunctionEvaluatorLibrary.Token
         {
             if (openParenthesesIndex >= closeParenthesesIndex)
             {
-                throw new ArithmeticException(string.Format($"No closing bracket/parenthesis. Token: ", openParenthesesIndex.ToString(CultureInfo)));
+                throw new ArithmeticException(
+                    string.Format($"No closing bracket/parenthesis. Token: ", openParenthesesIndex.ToString(CultureInfo.InvariantCulture)
+                    ));
             }
         }
 
@@ -124,7 +126,6 @@ namespace FunctionEvaluatorLibrary.Token
 
         private static void resolveOneArgumentExpression()
         {
-            // but if we only have one argument, then we pass it directly to the function
             resultOfComplexExpressions = double.Parse(LocalMathFunctions.getFunction(complexExpressionName)(new[]
             {
                             basicArithmeticalExpressions(complexExpressions)

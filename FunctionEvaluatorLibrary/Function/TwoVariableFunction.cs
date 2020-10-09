@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FunctionEvaluatorLibrary.Function
 {
-    class TwoVariableFunction : Function<Point>
+    public class TwoVariableFunction : Function<Point>
     {
         public TwoVariableFunction(string function): base(function)
         {

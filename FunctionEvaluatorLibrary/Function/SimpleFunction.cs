@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FunctionEvaluatorLibrary.Function
 {
-    class SimpleFunction : Function<double>
+    public class SimpleFunction : Function<double>
     {
         public SimpleFunction(string function): base(function)
         {

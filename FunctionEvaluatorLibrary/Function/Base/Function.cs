@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FunctionEvaluatorLibrary.Function.Base
 {
-    abstract class Function<T>
+    public abstract class Function<T>
     {
         protected string function;        
 

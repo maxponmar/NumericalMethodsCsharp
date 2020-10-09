@@ -17,7 +17,7 @@ namespace FunctionEvaluatorLibrary.Token
 
             for (int i = 0; i < expression.Length; i++)
             {
-                var character = expression[i];
+                char character = expression[i];
 
                 if (char.IsWhiteSpace(character))
                 {

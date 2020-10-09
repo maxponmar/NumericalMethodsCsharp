@@ -13,6 +13,8 @@ using NumericalMethods.CurveFitting.Interpolation;
 using NumericalMethods.CurveFitting.FourierApproximation;
 using NumericalMethods.DifferentiationIntegration;
 using NumericalMethods.OrdinayDifferentialEquations;
+using FunctionEvaluatorLibrary.Function;
+using System.Xml;
 
 namespace _01_PruebasNumericalMethods
 {

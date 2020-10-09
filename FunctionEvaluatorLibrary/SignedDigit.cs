@@ -22,11 +22,11 @@ namespace FunctionEvaluatorLibrary
             // at the beginning, for example, -1+2, or, when it is inside the brakets (-1).
             // NOTE: this works for + as well!
 
-            bool isNotLastDigit = index + 1 < expression.Length;
-            bool isSign = character == '-' || character == '+';
-            bool isNumber = char.IsDigit(expression[index + 1]);
+            bool isLastDigit = !(index + 1 < expression.Length);
+            bool isSign = (character == '-') || (character == '+');
+            bool isNumber = char.IsDigit(expression[index]);
             bool isFirstDigit = index == 0 || LocalOperators.containsOperator(expression[index - 1].ToString(CultureInfo.InvariantCulture)) || index - 1 > 0 && expression[index - 1] == '(';
-            return isNotLastDigit && isSign && isNumber && isFirstDigit;
+            return !isLastDigit && isSign && isNumber && isFirstDigit;
         }
     }
 }

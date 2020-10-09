@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FunctionEvaluatorLibrary.Function.Base
 {
-    class Point
+    public class Point
     {
         private double x;
         private double y;
@@ -22,7 +22,7 @@ namespace FunctionEvaluatorLibrary.Function.Base
 
         public double getY()
         {
-            return Y;
+            return y;
         }
     }
 }

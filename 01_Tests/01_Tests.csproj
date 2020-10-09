@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\NumericalMethods\NumericalMethods.csproj" />
+    <ProjectReference Include="..\FunctionEvaluatorLibrary\FunctionEvaluatorLibrary.csproj" />
+    <ProjectReference Include="..\NumericalMethods\NumericalMethodsOld.csproj" />
   </ItemGroup>
 
 </Project>
