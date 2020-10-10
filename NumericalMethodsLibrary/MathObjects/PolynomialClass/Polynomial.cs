@@ -8,7 +8,8 @@ namespace NumericalMethodsLibrary.MathObjects.PolynomialClass
     public partial class Polynomial
     {
         private int degree;
-        private List<double> coefficients;        
+        private List<double> coefficients;
+        private StringBuilder polynomialStringBuilder;
 
         public int Degree { get => degree; }
         public double[] Coefficients
@@ -29,6 +30,7 @@ namespace NumericalMethodsLibrary.MathObjects.PolynomialClass
         {
             this.coefficients = coefficients.ToList<double>();
             degree = coefficients.Length - 1;
+            polynomialStringBuilder = new StringBuilder();
         }
 
         public double Evaluate(double xValue)
@@ -56,5 +58,6 @@ namespace NumericalMethodsLibrary.MathObjects.PolynomialClass
         {
             return new Polynomial(this.coefficients.ToArray());
         }
+             
     }
 }
