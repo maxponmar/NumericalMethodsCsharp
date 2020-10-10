@@ -6,7 +6,7 @@ using System.Text;
 
 namespace FunctionEvaluatorLibrary.Token
 {
-    static class ResolveTokens
+    static class TokensResolver
     {
         private static int openParenthesesIndex;
         private static int closeParenthesesIndex;

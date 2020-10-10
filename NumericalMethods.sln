@@ -5,9 +5,7 @@ VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumericalMethodsOld", "NumericalMethods\NumericalMethodsOld.csproj", "{F346238A-4ABB-4ED6-8D7E-9B140DFCDFA6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathParser", "MathParser\MathParser.csproj", "{1D654FB9-A240-4A13-9FD6-08A8FE579AE8}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01_Tests", "01_Tests\01_Tests.csproj", "{9ED96D51-80D7-4100-9AFC-D95E15643B7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "01_Tests\Tests.csproj", "{9ED96D51-80D7-4100-9AFC-D95E15643B7D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunctionEvaluatorLibrary", "FunctionEvaluatorLibrary\FunctionEvaluatorLibrary.csproj", "{8B4724E3-1A50-4F1D-833D-6A2BB658C821}"
 EndProject
@@ -30,10 +28,6 @@ Global
 		{F346238A-4ABB-4ED6-8D7E-9B140DFCDFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F346238A-4ABB-4ED6-8D7E-9B140DFCDFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F346238A-4ABB-4ED6-8D7E-9B140DFCDFA6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1D654FB9-A240-4A13-9FD6-08A8FE579AE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1D654FB9-A240-4A13-9FD6-08A8FE579AE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1D654FB9-A240-4A13-9FD6-08A8FE579AE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1D654FB9-A240-4A13-9FD6-08A8FE579AE8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9ED96D51-80D7-4100-9AFC-D95E15643B7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9ED96D51-80D7-4100-9AFC-D95E15643B7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9ED96D51-80D7-4100-9AFC-D95E15643B7D}.Release|Any CPU.ActiveCfg = Release|Any CPU

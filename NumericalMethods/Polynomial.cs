@@ -39,12 +39,21 @@ namespace NumericalMethods
         /// <returns>The poylnomial evaluated in x</returns>
         public double Eval(double x)
         {
-            double res = coeficients[0];
-            for (int i = 1; i < coeficients.Length; i++)
+            double result = coeficients[degree];
+            //Console.WriteLine(result);
+            for (int i = degree-1; i >= 0; i--)
             {
-                res += Math.Pow(x, i) * coeficients[i];
+                Console.WriteLine($"IN FOR LOOP => {result}x + ({coeficients[i]})");
+                result = result * x + coeficients[i];                
             }
-            return res;
+
+            //double res = coeficients[0];
+            //for (int i = 1; i < coeficients.Length; i++)
+            //{
+            //    res += Math.Pow(x, i) * coeficients[i];
+            //}
+            Console.WriteLine($"=> {result}");
+            return result;
         }
 
         /// <summary>

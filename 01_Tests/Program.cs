@@ -27,6 +27,13 @@ namespace _01_PruebasNumericalMethods
 
         static void Main(string[] args)
         {
+            Console.WriteLine("POLYNOMIAL");
+            double[] coefficients = { -1, 2, -6, 2 };
+            Polynomial polynomial = new Polynomial(coefficients);
+            double actualResult = polynomial.Eval(3);
+            Console.WriteLine($"RESULT = {actualResult}");
+
+
             #region Root Finding
 
             Console.WriteLine("===== Root Finding =====");

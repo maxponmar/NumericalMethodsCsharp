@@ -23,7 +23,7 @@ namespace FunctionEvaluatorLibrary
 
             Tokens tokenizedFunction = Tokenizer.tokenize(function);
 
-            response = ResolveTokens.Resolve(tokenizedFunction);
+            response = TokensResolver.Resolve(tokenizedFunction);
 
             return response;
         }
@@ -41,7 +41,7 @@ namespace FunctionEvaluatorLibrary
 
             Tokens tokenizedFunction = Tokenizer.tokenize(function);
 
-            response = ResolveTokens.Resolve(tokenizedFunction);
+            response = TokensResolver.Resolve(tokenizedFunction);
 
             return response;
         }                       
