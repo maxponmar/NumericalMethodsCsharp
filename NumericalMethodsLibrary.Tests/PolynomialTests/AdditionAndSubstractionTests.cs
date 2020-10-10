@@ -10,12 +10,12 @@ namespace NumericalMethodsLibrary.Tests.PolynomialTests
         public void PlusSignOperatorTest()
         {
             double[] coefficients = { 1, 2, 3 };
+            double[] expectedCoefficients = { 1, 2, 3 };
 
             Polynomial polynomial = new Polynomial(coefficients);
-            Polynomial actualResult = +polynomial;
-            Polynomial expectedResult = new Polynomial(coefficients);
+            Polynomial actualResult = +polynomial;            
 
-            Assert.Equal(expectedResult.Coefficients, actualResult.Coefficients);
+            Assert.Equal(expectedCoefficients, actualResult.Coefficients);
         }
 
         [Fact]
@@ -25,10 +25,9 @@ namespace NumericalMethodsLibrary.Tests.PolynomialTests
             double[] expectedCoefficients = { -1, -2, -3 };
             
             Polynomial polynomial = new Polynomial(coefficients);
-            Polynomial actualResult = -polynomial;
-            Polynomial expectedResult = new Polynomial(expectedCoefficients);
+            Polynomial actualResult = -polynomial;            
 
-            Assert.Equal(expectedResult.Coefficients, actualResult.Coefficients);
+            Assert.Equal(expectedCoefficients, actualResult.Coefficients);
         }
 
         [Fact]
@@ -38,10 +37,9 @@ namespace NumericalMethodsLibrary.Tests.PolynomialTests
             double[] expectedCoefficients = { 3, 2, 3 };
 
             Polynomial polynomial = new Polynomial(coefficients);
-            Polynomial actualResult = 2 + polynomial;
-            Polynomial expectedResult = new Polynomial(expectedCoefficients);
+            Polynomial actualResult = 2 + polynomial;            
 
-            Assert.Equal(expectedResult.Coefficients, actualResult.Coefficients);
+            Assert.Equal(expectedCoefficients, actualResult.Coefficients);
         }
 
         [Fact]
@@ -51,10 +49,9 @@ namespace NumericalMethodsLibrary.Tests.PolynomialTests
             double[] expectedCoefficients = { 6, 2, 3 };
 
             Polynomial polynomial = new Polynomial(coefficients);
-            Polynomial actualResult = polynomial + 5;
-            Polynomial expectedResult = new Polynomial(expectedCoefficients);
+            Polynomial actualResult = polynomial + 5;            
 
-            Assert.Equal(expectedResult.Coefficients, actualResult.Coefficients);
+            Assert.Equal(expectedCoefficients, actualResult.Coefficients);
         }
 
         [Fact]
@@ -64,10 +61,9 @@ namespace NumericalMethodsLibrary.Tests.PolynomialTests
             double[] expectedCoefficients = { 0, 2, 3 };
 
             Polynomial polynomial = new Polynomial(coefficients);
-            Polynomial actualResult = 1 - polynomial;
-            Polynomial expectedResult = new Polynomial(expectedCoefficients);
+            Polynomial actualResult = 1 - polynomial;            
 
-            Assert.Equal(expectedResult.Coefficients, actualResult.Coefficients);
+            Assert.Equal(expectedCoefficients, actualResult.Coefficients);
         }
 
         [Fact]
@@ -77,10 +73,9 @@ namespace NumericalMethodsLibrary.Tests.PolynomialTests
             double[] expectedCoefficients = { -3, 2, 3 };
 
             Polynomial polynomial = new Polynomial(coefficients);
-            Polynomial actualResult = polynomial - 4;
-            Polynomial expectedResult = new Polynomial(expectedCoefficients);
+            Polynomial actualResult = polynomial - 4;            
 
-            Assert.Equal(expectedResult.Coefficients, actualResult.Coefficients);
+            Assert.Equal(expectedCoefficients, actualResult.Coefficients);
         }
 
 
@@ -95,10 +90,9 @@ namespace NumericalMethodsLibrary.Tests.PolynomialTests
             Polynomial secondPolynomial = new Polynomial(secondPolynomialCoefficients);  
             
             Polynomial actualResult = firstPolynomial + secondPolynomial;
+            
 
-            Polynomial expectedResult = new Polynomial(expectedCoefficients);
-
-            Assert.Equal(expectedResult.Coefficients, actualResult.Coefficients);
+            Assert.Equal(expectedCoefficients, actualResult.Coefficients);
         }
 
         [Fact]
@@ -111,11 +105,9 @@ namespace NumericalMethodsLibrary.Tests.PolynomialTests
             Polynomial firstPolynomial = new Polynomial(firstPolynomialCoefficients);
             Polynomial secondPolynomial = new Polynomial(secondPolynomialCoefficients);
 
-            Polynomial actualResult = firstPolynomial - secondPolynomial;
+            Polynomial actualResult = firstPolynomial - secondPolynomial;            
 
-            Polynomial expectedResult = new Polynomial(expectedCoefficients);
-
-            Assert.Equal(expectedResult.Coefficients, actualResult.Coefficients);
+            Assert.Equal(expectedCoefficients, actualResult.Coefficients);
         }
 
     }
