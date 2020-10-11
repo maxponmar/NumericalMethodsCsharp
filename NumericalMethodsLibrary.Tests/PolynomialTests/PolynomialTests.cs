@@ -107,5 +107,18 @@ namespace NumericalMethodsLibrary.Tests.PolynomialTests
 
             Assert.Equal(expectedResult, actualResult);
         }
+
+        [Fact]
+        public void PrintPolynomialFifthTest()
+        {
+            double[] coefficients = { 0, 0, 3 };
+            string expectedResult = "3x^2";
+
+            Polynomial polynomial = new Polynomial(coefficients);
+
+            string actualResult = polynomial.ToString();
+
+            Assert.Equal(expectedResult, actualResult);
+        }
     }
 }

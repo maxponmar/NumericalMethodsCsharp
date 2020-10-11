@@ -69,6 +69,8 @@ namespace NumericalMethodsLibrary.MathObjects.PolynomialClass
             if (emptyCoefficientsInARow > 0)
             {
                 appendFirstCoefficient(coefficient);
+                polynomialStringBuilder.Append("x");
+                appendDegree(index);
             }
             else
             {
