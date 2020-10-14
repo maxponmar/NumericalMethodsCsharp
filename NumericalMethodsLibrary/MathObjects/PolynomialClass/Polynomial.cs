@@ -12,6 +12,7 @@ namespace NumericalMethodsLibrary.MathObjects.PolynomialClass
         private StringBuilder polynomialStringBuilder;
 
         public int Degree { get => degree; }
+
         public double[] Coefficients
         {
             get => coefficients.ToArray();
@@ -20,6 +21,12 @@ namespace NumericalMethodsLibrary.MathObjects.PolynomialClass
                 coefficients = value.ToList<double>();
                 degree = value.Length - 1;
             }
+        }
+
+        public double this[int index]
+        {
+            get => coefficients[index];
+            set => coefficients[index] = value;
         }
 
         /// <summary>
@@ -57,7 +64,6 @@ namespace NumericalMethodsLibrary.MathObjects.PolynomialClass
         public Polynomial Clone()
         {
             return new Polynomial(this.coefficients.ToArray());
-        }
-             
+        }               
     }
 }

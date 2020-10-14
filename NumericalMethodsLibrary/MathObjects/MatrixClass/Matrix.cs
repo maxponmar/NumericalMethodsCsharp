@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NumericalMethodsLibrary.MathObjects.MatrixClass
 {
-    public class Matrix
+    public partial class Matrix
     {
         private List<List<double>> data;
         private int rowsCount;
@@ -13,10 +13,17 @@ namespace NumericalMethodsLibrary.MathObjects.MatrixClass
 
         public int RowsCount { get => rowsCount; }
         public int ColumnsCount { get => columnsCount; }
+
         public double[,] Data
         {
             get => convertDataTo2DArray();
             set => setData(value);
+        }
+
+        public double this[int row, int column]
+        {
+            get => data[row][column];
+            set => data[row][column] = value;
         }
 
         public Matrix()
@@ -29,7 +36,14 @@ namespace NumericalMethodsLibrary.MathObjects.MatrixClass
         public Matrix(double[,] data)
         {
             setData(data);
-        }        
+        }
+
+        public Matrix(List<List<double>> data)
+        {
+            this.data = data;
+            rowsCount = data.Count;
+            columnsCount = data[0].Count;
+        }
 
         private double[,] convertDataTo2DArray()
         {
@@ -48,18 +62,25 @@ namespace NumericalMethodsLibrary.MathObjects.MatrixClass
 
         private void setData(double[,] data)
         {
+            this.data = new List<List<double>>();
+
             rowsCount = data.GetLength(0);
             columnsCount = data.GetLength(1);
 
             for (int i = 0; i < rowsCount; i++)
             {
                 double[] newRow = new double[columnsCount];
-                for (int n = 0; n < columnsCount; n++)
+                for (int j = 0; j < columnsCount; j++)
                 {
-                    newRow[n] = data[i, n];
+                    newRow[j] = data[i, j];
                 }
                 this.data.Add(newRow.ToList());
             }
+        }
+
+        public Matrix Clone()
+        {
+            return new Matrix(this.data);
         }
     }
 }

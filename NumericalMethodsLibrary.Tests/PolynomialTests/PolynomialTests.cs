@@ -7,6 +7,32 @@ namespace NumericalMethodsLibrary.Tests.PolynomialTests
     public class PolynomialTests
     {
         [Fact]
+        public void GetCoefficientFromPolynomialTest()
+        {
+            double[] coefficients = { 1, 9, 4, 7 };
+
+            Polynomial polynomial = new Polynomial(coefficients);
+
+            double secondCoefficient = polynomial[1];
+
+            Assert.Equal(9, secondCoefficient);
+        }
+
+        [Fact]
+        public void SetCoefficientFromPolynomialTest()
+        {
+            double[] coefficients = { 1, 9, 4, 7 };
+
+            Polynomial polynomial = new Polynomial(coefficients);
+
+            double secondCoefficient = 13;
+
+            polynomial[1] = 13;
+
+            Assert.Equal(13, secondCoefficient);
+        }
+
+        [Fact]
         public void FirstPolynomialEvaluationTest()
         {
             double[] coefficients = { -1, 2, -6, 2 };
@@ -54,71 +80,6 @@ namespace NumericalMethodsLibrary.Tests.PolynomialTests
             Polynomial actualResult = polynomial.Clone();            
 
             Assert.Equal(expectedCoefficients, actualResult.Coefficients);
-        }
-
-        [Fact]
-        public void PrintPolynomialFirstTest()
-        {
-            double[] coefficients = { -12, -4, 3, 1 };
-            string expectedResult = "-12 - 4x + 3x^2 + x^3";
-
-            Polynomial polynomial = new Polynomial(coefficients);
-
-            string actualResult = polynomial.ToString();
-
-            Assert.Equal(expectedResult, actualResult);
-        }
-
-        [Fact]
-        public void PrintPolynomialSecondTest()
-        {
-            double[] coefficients = { 2, -1, 3, -1 };
-            string expectedResult = "2 - x + 3x^2 - x^3";
-
-            Polynomial polynomial = new Polynomial(coefficients);
-
-            string actualResult = polynomial.ToString();
-
-            Assert.Equal(expectedResult, actualResult);
-        }
-
-        [Fact]
-        public void PrintPolynomialThirdTest()
-        {
-            double[] coefficients = { 0, 1, 3, -2 };
-            string expectedResult = "x + 3x^2 - 2x^3";
-
-            Polynomial polynomial = new Polynomial(coefficients);
-
-            string actualResult = polynomial.ToString();
-
-            Assert.Equal(expectedResult, actualResult);
-        }
-
-        [Fact]
-        public void PrintPolynomialFourthTest()
-        {
-            double[] coefficients = { 0, -1, 3, -2, 0, 1 };
-            string expectedResult = "-x + 3x^2 - 2x^3 + x^5";
-
-            Polynomial polynomial = new Polynomial(coefficients);
-
-            string actualResult = polynomial.ToString();
-
-            Assert.Equal(expectedResult, actualResult);
-        }
-
-        [Fact]
-        public void PrintPolynomialFifthTest()
-        {
-            double[] coefficients = { 0, 0, 3 };
-            string expectedResult = "3x^2";
-
-            Polynomial polynomial = new Polynomial(coefficients);
-
-            string actualResult = polynomial.ToString();
-
-            Assert.Equal(expectedResult, actualResult);
-        }
+        }       
     }
 }
