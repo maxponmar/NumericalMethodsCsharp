@@ -1,6 +1,12 @@
 # -NumericalMethodsCsharp-
 Numerical Methods Library for C# 
 
+https://maxponmar.github.io/NumericalMethodsCsharp/
+
+### REFACTORING
+I'm refactoring this project as the old version was very messy. Now I'm trying to write code more elegant and easy to read.
+In addition to I create XUnit test projects instead of a separate project that uses this library for this library to try TDD.
+
 This library is based on the book "Numerical Method for Engineers - Steven C. Chapra, Raymond P. Cannale"
 and in order to build it quickly or add more methods I added algoriths writen by other people so
 their credits are published on that specific code and on the library description below:
