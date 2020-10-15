@@ -44,16 +44,16 @@ namespace NumericalMethodsLibrary.MathObjects.MatrixClass
 
         private static Matrix addMatricesWithMultiplier(Matrix firstMatrix, Matrix secondMatrix, int multiplier)
         {
-            Matrix resultMatrix = new Matrix();
+            double[,] resultMatrixValues = new double[firstMatrix.rowsCount, firstMatrix.columnsCount];
             try
             {
                 if (firstMatrix.isTheSameSize(secondMatrix))
                 {
-                    for (int i = 0; i < firstMatrix.rowsCount + 1; i++)
+                    for (int i = 0; i < firstMatrix.rowsCount; i++)
                     {
                         for (int j = 0; j < firstMatrix.columnsCount; j++)
                         {
-                            resultMatrix[i, j] = firstMatrix[i, j] + (multiplier * secondMatrix[i, j]);
+                            resultMatrixValues[i, j] = firstMatrix[i, j] + (multiplier * secondMatrix[i, j]);
                         }
                     }
                 }
@@ -72,7 +72,7 @@ namespace NumericalMethodsLibrary.MathObjects.MatrixClass
             {
                 Console.WriteLine(exception.Message);
             }
-            return resultMatrix;
+            return new Matrix(resultMatrixValues);
         }
     }
 }
