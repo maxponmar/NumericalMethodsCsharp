@@ -11,23 +11,23 @@ namespace ConsoleApp
 
             double[,] firstMatrixValues =
                 {
-                    { 1, 2, 3 },
-                    { 4, 5, 6 },
+                    { 11, 2, 3 },
+                    { 4, 5, 60 },
                     { 7, 8, 9 }
                 };
 
             double[,] secondMatrixValues =
                 {
                     { -1, 3, 3 },
-                    { -4, 2, 6 },
+                    { -4, 2, 60 },
                     { -2, 1, 2 }
                 };
 
             double[,] expectedValues =
                 {
-                    { 0, 5, 6 },
-                    { 0, 10, 12 },
-                    { 14, 16, 11 }
+                    { 10, 5, 6   },
+                    { 0,  7, 120 },
+                    { 5,  9, 11  }
                 };
 
 
@@ -35,6 +35,8 @@ namespace ConsoleApp
             Matrix secondMatrix = new Matrix(secondMatrixValues);
 
             Matrix actualResult = firstMatrix + secondMatrix;
+
+            Console.WriteLine(actualResult);
         }
     }
 }
