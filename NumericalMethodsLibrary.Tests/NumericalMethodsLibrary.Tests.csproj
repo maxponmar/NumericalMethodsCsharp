@@ -17,4 +17,8 @@
     <ProjectReference Include="..\NumericalMethodsLibrary\NumericalMethodsLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="RootFinding\" />
+  </ItemGroup>
+
 </Project>
