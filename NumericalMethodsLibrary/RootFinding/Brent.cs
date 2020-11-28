@@ -10,7 +10,7 @@ namespace NumericalMethodsLibrary.RootFinding
     /// The main algorithm was writen by: John D. Cook on his article : Three Methods for Root-finding in C# link: https://www.codeproject.com/Articles/79541/Three-Methods-for-Root-finding-in-C
     /// licensed under The BSD License also called the "Simplified BSD License" 
     /// </summary>
-    class Brent
+    public class Brent
     {
         private double[] lastResult = new double[3];
         /// <summary>

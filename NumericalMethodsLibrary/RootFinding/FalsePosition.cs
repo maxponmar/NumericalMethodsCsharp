@@ -6,7 +6,7 @@ using FunctionEvaluatorLibrary.Function;
 
 namespace NumericalMethodsLibrary.RootFinding
 {
-    class FalsePosition
+    public class FalsePosition
     {
         public class False_Position
         {

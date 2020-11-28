@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NumericalMethodsLibrary
 {
-    class CSV_Tools
+    public static class CSV_Tools
     {
         /// <summary>
         /// Convert a List(String) into a csv file given its path

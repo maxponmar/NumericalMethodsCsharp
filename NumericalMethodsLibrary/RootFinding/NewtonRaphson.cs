@@ -5,7 +5,7 @@ using FunctionEvaluatorLibrary.Function;
 
 namespace NumericalMethodsLibrary.RootFinding
 {
-    class NewtonRaphson
+    public class NewtonRaphson
     {
         private double[] lastResult = new double[3];
         /// <summary>

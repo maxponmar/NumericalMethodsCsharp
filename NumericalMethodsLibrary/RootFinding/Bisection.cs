@@ -4,8 +4,8 @@ using FunctionEvaluatorLibrary.Function;
 using System.Text;
 
 namespace NumericalMethodsLibrary.RootFinding
-{    
-    class Bisection
+{
+    public class Bisection
     {
         private double[] lastResult = new double[3];
         /// <summary>

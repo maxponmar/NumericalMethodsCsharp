@@ -5,7 +5,7 @@ using FunctionEvaluatorLibrary.Function;
 
 namespace NumericalMethodsLibrary.Optimization
 {
-    class Brent
+    public class Brent
     {
         private double[] lastResult = new double[2];
         /// <summary>

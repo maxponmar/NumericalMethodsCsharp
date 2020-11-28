@@ -9,7 +9,7 @@ namespace NumericalMethodsLibrary.RootFinding
     /// The original algorithm was writen by lebourhisgilles : https://workshop.numworks.com/python/lebourhisgilles
     /// I only take it from pytho to C#, here is the link of the code: https://workshop.numworks.com/python/lebourhisgilles/bairstow
     /// </summary>
-    class Bairstow
+    public class Bairstow
     {
         private List<string> results;
         /// <summary>

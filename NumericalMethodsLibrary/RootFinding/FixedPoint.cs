@@ -6,7 +6,7 @@ using FunctionEvaluatorLibrary.Function;
 
 namespace NumericalMethodsLibrary.RootFinding
 {
-    class FixedPoint
+    public class FixedPoint
     {
         private double[] lastResult = new double[3];
         /// <summary>

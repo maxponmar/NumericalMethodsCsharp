@@ -8,7 +8,7 @@ namespace NumericalMethodsLibrary.RootFinding
     /// <summary>
     /// This class allows you to use the Muller's method for root finding (only works with polinomials)
     /// </summary>
-    class Muller
+    public class Muller
     {
         private double[] lastResult = new double[3];
         /// <summary>

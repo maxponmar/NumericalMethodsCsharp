@@ -5,7 +5,7 @@ using FunctionEvaluatorLibrary.Function;
 
 namespace NumericalMethodsLibrary.Optimization
 {
-    class GoldenSection
+    public class GoldenSection
     {
         private double[] lastResult = new double[2];
         /// <summary>

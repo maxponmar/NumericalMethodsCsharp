@@ -6,7 +6,7 @@ using FunctionEvaluatorLibrary.Function;
 
 namespace NumericalMethodsLibrary.RootFinding
 {
-    class Secant
+    public class Secant
     {
         private double[] lastResult = new double[3];
         /// <summary>
