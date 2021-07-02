@@ -1,7 +1,7 @@
-﻿using System;
+﻿using FunctionEvaluatorLibrary.Function;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using FunctionEvaluatorLibrary.Function;
 
 namespace NumericalMethodsLibrary.RootFinding
 {
@@ -28,6 +28,7 @@ namespace NumericalMethodsLibrary.RootFinding
         public double FindRoot(string fx, double xr, double h = 0.001, int maxIte = 10)
         {
             double x0, x1, x2, h0, h1, d0, d1, a, b, c, rad, den, dxr = 0, fx1, fx0, fx2, fxr = 0;
+            this.function = new SimpleFunction(fx);
             x2 = xr;
             x1 = xr + h * xr;
             x0 = xr + h * xr;

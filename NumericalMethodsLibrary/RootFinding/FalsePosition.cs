@@ -1,7 +1,7 @@
-﻿using System;
+﻿using FunctionEvaluatorLibrary.Function;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using FunctionEvaluatorLibrary.Function;
 
 
 namespace NumericalMethodsLibrary.RootFinding
@@ -34,7 +34,7 @@ namespace NumericalMethodsLibrary.RootFinding
 
                 fxl = this.function.Evaluate(xl);
                 fxu = this.function.Evaluate(xu);
-                
+
                 for (int i = 0; i < maxIte; i++)
                 {
                     temp = xr;

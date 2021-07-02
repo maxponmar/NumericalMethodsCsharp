@@ -53,17 +53,17 @@ namespace NumericalMethodsLibrary.MathObjects.PolynomialClass
         }
 
         public void deleteLastZeros()
-        {            
+        {
             while (coefficients[degree] == 0)
-            {                
+            {
                 coefficients.RemoveAt(degree);
-                degree--;                
-            }           
+                degree--;
+            }
         }
 
         public Polynomial Clone()
         {
             return new Polynomial(this.coefficients.ToArray());
-        }               
+        }
     }
 }

@@ -1,7 +1,7 @@
-﻿using System;
+﻿using FunctionEvaluatorLibrary.Function;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using FunctionEvaluatorLibrary.Function;
 
 namespace NumericalMethodsLibrary.Optimization
 {
@@ -33,7 +33,7 @@ namespace NumericalMethodsLibrary.Optimization
 
             double fv = fu; double fw = fu; double fxx = fu;
             double xm = 0.5 * (xlow + xhigh); double d = 0; double e = 0;
-            bool para = true; double r, p, q, s; int i = 0;            
+            bool para = true; double r, p, q, s; int i = 0;
 
             do
             {
@@ -96,7 +96,7 @@ namespace NumericalMethodsLibrary.Optimization
                         }
                     }
                 }
-                xm = 0.5 * (xlow + xhigh);                
+                xm = 0.5 * (xlow + xhigh);
                 px = u; pfx = fu;
             } while (Math.Abs(e) > tol);
             lastResult[0] = px;
@@ -126,7 +126,7 @@ namespace NumericalMethodsLibrary.Optimization
             double fv = fu; double fw = fu; double fxx = fu;
             double xm = 0.5 * (xlow + xhigh); double d = 0; double e = 0;
             bool para = true; double r, p, q, s; int i = 0;
-            
+
 
             do
             {

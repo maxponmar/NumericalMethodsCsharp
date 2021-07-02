@@ -31,7 +31,7 @@ namespace NumericalMethodsLibrary.MathObjects.PolynomialClass
             }
             return new Polynomial(newCoef);
         }
-        
+
         public static Polynomial operator /(Polynomial polynomial, double value)
         {
             return (1 / value) * polynomial;

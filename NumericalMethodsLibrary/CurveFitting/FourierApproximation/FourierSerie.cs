@@ -5,15 +5,15 @@ using System.Text;
 namespace NumericalMethodsLibrary.CurveFitting.FourierApproximation
 {
     public class FourierSerie : ICloneable
-    {        
+    {
         private int numberOfArmonincs;
 
         // First Fourier Coefficient
         private double a0;
-        
+
         private double[] an;
         private double[] bn;
-        
+
         private double wn;
         public double Wn { get => wn; set => wn = value; }
         public double[] An { get => an; set => an = value; }
@@ -89,7 +89,7 @@ namespace NumericalMethodsLibrary.CurveFitting.FourierApproximation
                         serie += string.Format("+ sin({0}x) ", wr);
                     else
                         serie += string.Format("+ {0}sin({1}x) ", bnr, wr);
-                }                
+                }
             }
             return serie;
         }

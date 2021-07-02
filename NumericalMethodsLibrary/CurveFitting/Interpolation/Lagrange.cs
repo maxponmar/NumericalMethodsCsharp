@@ -8,7 +8,7 @@ namespace NumericalMethodsLibrary.CurveFitting.Interpolation
     public class Lagrange
     {
         private Polynomial lastResult;
-        
+
         public Polynomial LastResult { get => lastResult; }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace NumericalMethodsLibrary.CurveFitting.Interpolation
                 {
                     coef = new double[] { -x[i], 1 };
                     sub_poly[i] = new Polynomial(coef);
-                    In[i] = new Polynomial(new double[] { 1 });                    
+                    In[i] = new Polynomial(new double[] { 1 });
                 }
                 // Calculate In polynomials        
                 double den;
@@ -49,8 +49,8 @@ namespace NumericalMethodsLibrary.CurveFitting.Interpolation
                             In[i] *= sub_poly[j];
                             den *= (x[i] - x[j]);
                         }
-                    }                    
-                    In[i] /= den;                    
+                    }
+                    In[i] /= den;
                 }
                 // Calculatin Px (result)
                 for (int i = 0; i < x.Length; i++)

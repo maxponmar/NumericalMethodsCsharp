@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Numerics;
+using System.Text;
 
 namespace NumericalMethodsLibrary.RootFinding
 {
@@ -15,7 +15,7 @@ namespace NumericalMethodsLibrary.RootFinding
         /// <summary>
         /// This List save the last result
         /// </summary>
-        public List<string> Results { get => results; }        
+        public List<string> Results { get => results; }
 
         /// <summary>
         /// The Bairstow methos only works with polinomials, it return all (real or complex) roots. This function returns a List(string) wiht the roots

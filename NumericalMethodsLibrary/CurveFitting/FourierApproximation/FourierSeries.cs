@@ -43,7 +43,7 @@ namespace NumericalMethodsLibrary.CurveFitting.FourierApproximation
                 for (int i = 1; i < n + 1; i++)
                 {
                     for (int j = 0; j < N; j++)
-                    {                        
+                    {
                         zxcos += (y[j] * Math.Cos((2.0 * Math.PI * i * x[j]) / tao));
                         zxsen += (y[j] * Math.Sin((2.0 * Math.PI * i * x[j]) / tao));
                     }

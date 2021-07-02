@@ -1,6 +1,6 @@
-﻿using System;
+﻿using FunctionEvaluatorLibrary.Function;
+using System;
 using System.Collections.Generic;
-using FunctionEvaluatorLibrary.Function;
 using System.Text;
 
 namespace NumericalMethodsLibrary.RootFinding

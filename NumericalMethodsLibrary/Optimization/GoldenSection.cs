@@ -1,7 +1,7 @@
-﻿using System;
+﻿using FunctionEvaluatorLibrary.Function;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using FunctionEvaluatorLibrary.Function;
 
 namespace NumericalMethodsLibrary.Optimization
 {
@@ -34,7 +34,7 @@ namespace NumericalMethodsLibrary.Optimization
             double f1, f2, xopt = 0, fxx, ea = 0;
 
             this.function = new SimpleFunction(function);
-            f1 = this.function.Evaluate(x1);            
+            f1 = this.function.Evaluate(x1);
             f2 = this.function.Evaluate(x2);
 
             if (mode == 0 || mode == 1)
@@ -86,12 +86,12 @@ namespace NumericalMethodsLibrary.Optimization
                         }
                         fxx = this.function.Evaluate(xopt);
                         if (ea <= error)
-                        {                            
+                        {
                             px = xopt; pfx = fxx;
                             lastResult[0] = xopt;
                             lastResult[1] = pfx;
-                            return xopt;                            
-                        }                        
+                            return xopt;
+                        }
                         px = xopt; pfx = fxx;
                     }
                     lastResult[0] = xopt;
@@ -145,12 +145,12 @@ namespace NumericalMethodsLibrary.Optimization
                         }
                         fxx = this.function.Evaluate(xopt);
                         if (ea <= error)
-                        {                            
+                        {
                             px = xopt; pfx = fxx;
                             lastResult[0] = xopt;
                             lastResult[1] = pfx;
                             return xopt;
-                        }                        
+                        }
                         px = xopt; pfx = fxx;
                     }
                     lastResult[0] = xopt;
@@ -188,7 +188,7 @@ namespace NumericalMethodsLibrary.Optimization
             double d = R * (xu - xl);
             double x1 = xl + d; double x2 = xu - d;
             double f1, f2, xopt = 0, fxx, ea = 0;
-            
+
             this.function = new SimpleFunction(function);
             f1 = this.function.Evaluate(x1);
             f2 = this.function.Evaluate(x2);
@@ -243,12 +243,12 @@ namespace NumericalMethodsLibrary.Optimization
                         fxx = this.function.Evaluate(xopt);
                         log.Add(string.Format($"{i + 1},{xopt},{fxx},{ea}"));
                         if (ea <= error)
-                        {                            
+                        {
                             px = xopt; pfx = fxx;
                             lastResult[0] = xopt;
                             lastResult[1] = pfx;
-                            return xopt;                            
-                        }                        
+                            return xopt;
+                        }
                         px = xopt; pfx = fxx;
                     }
                     lastResult[0] = xopt;
@@ -303,12 +303,12 @@ namespace NumericalMethodsLibrary.Optimization
                         fxx = this.function.Evaluate(xopt);
                         log.Add(string.Format($"{i + 1},{xopt},{fxx},{ea}"));
                         if (ea <= error)
-                        {                            
+                        {
                             px = xopt; pfx = fxx;
                             lastResult[0] = xopt;
                             lastResult[1] = pfx;
                             return xopt;
-                        }                        
+                        }
                         px = xopt; pfx = fxx;
                     }
                     lastResult[0] = xopt;

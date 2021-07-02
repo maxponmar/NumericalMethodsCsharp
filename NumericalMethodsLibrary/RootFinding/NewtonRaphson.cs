@@ -1,7 +1,7 @@
-﻿using System;
+﻿using FunctionEvaluatorLibrary.Function;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using FunctionEvaluatorLibrary.Function;
 
 namespace NumericalMethodsLibrary.RootFinding
 {
@@ -39,8 +39,8 @@ namespace NumericalMethodsLibrary.RootFinding
                 for (int i = 0; i < maxIte; i++)
                 {
                     temp = xr;
-                    fxr = this.function(temp);
-                    fdxr = this.derivative(temp);
+                    fxr = this.function.Evaluate(temp);
+                    fdxr = this.derivative.Evaluate(temp);
                     if (fdxr == 0) { break; }
                     xr = temp - (fxr / fdxr);
                     if (xr != 0)
@@ -106,8 +106,8 @@ namespace NumericalMethodsLibrary.RootFinding
                 for (int i = 0; i < maxIte; i++)
                 {
                     temp = xr;
-                    fxr = this.function(temp);
-                    fdxr = this.derivative(temp);
+                    fxr = this.function.Evaluate(temp);
+                    fdxr = this.derivative.Evaluate(temp);
                     if (fdxr == 0) { log.Add("Derivative equal to zero"); break; }
                     xr = temp - (fxr / fdxr);
                     if (xr != 0)
@@ -123,7 +123,7 @@ namespace NumericalMethodsLibrary.RootFinding
                 // When the user didn't introduce a symbolic derivate
                 // In order to use centered finite-divided difference formula we need to evaluate 4 time the function
                 double fx1, fx2, fx3, fx4;
-                fxr = mathParser.Eval_function(fx_function, xr);
+                fxr = this.function.Evaluate(xr);
                 for (int i = 0; i < maxIte; i++)
                 {
                     temp = xr;
@@ -138,7 +138,7 @@ namespace NumericalMethodsLibrary.RootFinding
                     fdxr = (-fx1 + 8 * fx2 - 8 * fx3 + fx4) / (12 * h);
                     if (fdxr == 0) { log.Add("Derivative equal to zero"); break; }
                     xr = temp - (fxr / fdxr);
-                    fxr = mathParser.Eval_function(fx_function, temp);
+                    fxr = this.function.Evaluate(temp);
                     if (xr != 0)
                         error = Math.Abs((xr - temp) / xr);
                     log.Add(string.Format($"{i + 1},{xr},{fxr},{fdxr},{error}"));

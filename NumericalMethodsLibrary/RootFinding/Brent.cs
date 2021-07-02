@@ -1,7 +1,7 @@
-﻿using System;
+﻿using FunctionEvaluatorLibrary.Function;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using FunctionEvaluatorLibrary.Function;
 
 
 namespace NumericalMethodsLibrary.RootFinding
@@ -44,7 +44,7 @@ namespace NumericalMethodsLibrary.RootFinding
 
             this.function = new SimpleFunction(fx);
 
-            fa = this.function.Evaluate(a);   
+            fa = this.function.Evaluate(a);
             fb = this.function.Evaluate(b);
 
             if (fa * fb > 0.0)
@@ -228,7 +228,7 @@ namespace NumericalMethodsLibrary.RootFinding
                     lastResult[2] = errorEstimate;
                     return b;
                 }
-                
+
                 fb = this.function.Evaluate(b);
                 if ((fb > 0.0 && fc > 0.0) || (fb <= 0.0 && fc <= 0.0))
                     goto label_int;

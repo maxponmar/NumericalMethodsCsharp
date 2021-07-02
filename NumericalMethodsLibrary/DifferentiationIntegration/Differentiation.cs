@@ -57,7 +57,7 @@ namespace NumericalMethodsLibrary.DifferentiationIntegration
                     return -1;
             }
             return calc_derivative(function, x, h, START, MULTIPLIERS, DENOMINATOR);
-        }        
+        }
 
         // === In order to avoid repetition, this function can calculate directly any kind of derivative given the correct parameters
         // === To understand how it works you need to look at the book or other resource and found how a deriviative is calculated using Taylor series

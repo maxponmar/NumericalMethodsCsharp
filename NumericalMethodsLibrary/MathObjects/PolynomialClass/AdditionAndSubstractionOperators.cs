@@ -20,14 +20,14 @@ namespace NumericalMethodsLibrary.MathObjects.PolynomialClass
         }
 
         public static Polynomial operator +(double value, Polynomial polynomial)
-        {           
+        {
             return plusSignOperation(polynomial, value);
         }
 
         public static Polynomial operator +(Polynomial polynomial, double value)
         {
             return plusSignOperation(polynomial, value);
-        }        
+        }
 
         public static Polynomial operator -(double value, Polynomial polynomial)
         {
@@ -87,13 +87,13 @@ namespace NumericalMethodsLibrary.MathObjects.PolynomialClass
             }
             return new Polynomial(resultCoefficients);
         }
-        
+
         private static double[] addDifferentSizePolynomials(Polynomial biggestPolynomial, Polynomial smallestPolynomial, int multiplier)
         {
             double[] resultCoefficients = new double[biggestPolynomial.degree + 1];
             double[] biggerPolynomialCoefficients = biggestPolynomial.coefficients.ToArray();
-            double[] smallestPolynomialCoefficients = smallestPolynomial.coefficients.ToArray();            
-            
+            double[] smallestPolynomialCoefficients = smallestPolynomial.coefficients.ToArray();
+
             for (int i = 0; i < biggestPolynomial.degree + 1; i++)
             {
                 if (i <= smallestPolynomial.degree)

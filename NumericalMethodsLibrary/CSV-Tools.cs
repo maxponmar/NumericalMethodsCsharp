@@ -38,7 +38,8 @@ namespace NumericalMethodsLibrary
             }
             catch (Exception e)
             {
-                throw e;
+                // TODO: Implemebt thorw exception
+                throw;
             }
         }
 
@@ -67,7 +68,8 @@ namespace NumericalMethodsLibrary
             }
             catch (Exception e)
             {
-                throw e;
+                // TODO: Implement throw exception
+                throw;
             }
         }
 
@@ -98,7 +100,8 @@ namespace NumericalMethodsLibrary
             }
             catch (Exception e)
             {
-                throw e;
+                // TODO: Implement throew exception
+                throw;
             }
         }
     }

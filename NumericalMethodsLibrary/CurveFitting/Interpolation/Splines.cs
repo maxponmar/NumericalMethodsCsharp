@@ -110,10 +110,10 @@ namespace NumericalMethodsLibrary.CurveFitting.Interpolation
                             for (int i = 0; i < rs2.Length / 3; i++)
                             {
                                 for (int j = 0; j < 3; j++)
-                                {                                    
-                                    coef[j] = rs2[3 * (1 + i) - j - 1];                                    
+                                {
+                                    coef[j] = rs2[3 * (1 + i) - j - 1];
                                     count++;
-                                }                                
+                                }
                                 _Splines.Add(new double[] { x[i], x[i + 1] }, new Polynomial(coef));
                                 coef = new double[3];
                             }
@@ -210,10 +210,10 @@ namespace NumericalMethodsLibrary.CurveFitting.Interpolation
                             for (int i = 0; i < r.Length / 4; i++)
                             {
                                 for (int j = 0; j < 4; j++)
-                                {                                    
+                                {
                                     coef[j] = r[4 * (1 + i) - j - 1];
                                     count++;
-                                }                                
+                                }
                                 _Splines.Add(new double[] { x[i], x[i + 1] }, new Polynomial(coef));
                                 coef = new double[4];
                             }
@@ -230,7 +230,7 @@ namespace NumericalMethodsLibrary.CurveFitting.Interpolation
             {
                 Console.WriteLine("The dataset is not compatible -> x.Length and y.Length must be the same and greater than 1");
             }
-        }        
+        }
 
         public override string ToString()
         {

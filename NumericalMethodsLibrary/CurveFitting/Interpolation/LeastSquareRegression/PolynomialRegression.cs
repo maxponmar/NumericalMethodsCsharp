@@ -1,4 +1,5 @@
 ﻿using NumericalMethodsLibrary.MathObjects.PolynomialClass;
+using NumericalMethodsLibrary.MathObjects.MatrixClass;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -48,7 +49,7 @@ namespace NumericalMethodsLibrary.CurveFitting.Interpolation.LeastSquareRegressi
                 // solve it
                 double[] coeff;
                 LinearAlgebraicEquations.GaussElimination ge = new LinearAlgebraicEquations.GaussElimination();
-                ge.Solve(a, b, out coeff);
+                ge.Solve(new Matrix(a), b, out coeff);
 
                 a0 = coeff[0];
                 a1 = coeff[1];
